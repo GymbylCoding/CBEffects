@@ -47,13 +47,7 @@ local getPointInEllipse = function(x, y, xRadius, yRadius, innerXRadius, innerYR
 -- Get point that is within a circle
 local getPointInCircle = function(x, y, radius, innerRadius) local pointX, pointY repeat pointX, pointY = math_random(-radius, radius), math_random(-radius, radius) until lengthOf(pointX, pointY, 0, 0) <= radius and lengthOf(pointX, pointY, 0, 0) >= innerRadius return pointX + x, pointY + y end
 -- Get point that is within a radius
-local getPointInRadius = function(x, y, xRadius, yRadius, innerXRadius, innerYRadius)
-	if xRadius ~= yRadius or innerXRadius ~= innerYRadius then
-		return getPointInEllipse(x, y, xRadius, yRadius, innerXRadius, innerYRadius)
-	else
-		return getPointInCircle(x, y, xRadius, innerXRadius)
-	end
-end
+local getPointInRadius = function(x, y, xRadius, yRadius, innerXRadius, innerYRadius) if xRadius ~= yRadius or innerXRadius ~= innerYRadius then return getPointInEllipse(x, y, xRadius, yRadius, innerXRadius, innerYRadius) else return getPointInCircle(x, y, xRadius, innerXRadius) end end
 -- Get points along line
 local getPointsAlongLine = function(x1, y1, x2, y2, d) local points = {} local diffX = x2 - x1 local diffY = y2 - y1 local distBetween local x, y = x1, y1 if d == "total" or not d then distBetween = lengthOf(x1, y1, x2, y2) else distBetween = d end local addX, addY = diffX / distBetween, diffY / distBetween for i = 1, distBetween do points[#points + 1] = {x, y} x, y = x + addX, y + addY end return points end
 

@@ -56,6 +56,7 @@ function vent_core.new(params)
 	local vent = lib_frame.newFrame(params, preset)
 	local particles = lib_vst.new("particleIndex")
 	local iterStage = lib_iterate.newStage(vent)
+	vent.id = iterStage.id
 	local alternator = 0
 
 	------------------------------------------------------------------------------
@@ -287,7 +288,7 @@ function vent_core.new(params)
 			particles.removeMarked()
 		end
 
-		for p in particles() do
+		for p in particles.items() do
 			iterStage.updateParticle(p)
 		end
 	end

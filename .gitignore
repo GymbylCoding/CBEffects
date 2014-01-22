@@ -1,8 +1,5 @@
 # .gitignore
 
 Etc/graphics.txt
-SampleApp/
-Tutorial/
-Textures/
-wiki/
+clink.lua
 misc_cache.txt

@@ -143,6 +143,7 @@ function lib_iterator.newStage(masterVent)
 				field._cbe_reserved.execute(this)
 			end
 		end
+
 	end
 
 	return stage

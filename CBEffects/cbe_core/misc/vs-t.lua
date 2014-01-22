@@ -127,6 +127,7 @@ function lib_vst.new(storeAs)
 	------------------------------------------------------------------------------
 	function vst.items()
 		local iterator = 0
+
 		return function()
 			iterator = iterator + 1
 			if iterator <= #stored then

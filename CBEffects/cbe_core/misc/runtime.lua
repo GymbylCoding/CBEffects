@@ -37,13 +37,6 @@ function lib_runtime.addField(f) fields.add(f) end
 function lib_runtime.removeField(f) fields.markForRemoval(f._cbe_reserved.runtimeIndex) end
 
 --------------------------------------------------------------------------------
--- Update Vent
---------------------------------------------------------------------------------
-local function updateVent(v)
-	v._cbe_reserved.updateParticles()
-end
-
---------------------------------------------------------------------------------
 -- Update Runtime System
 --------------------------------------------------------------------------------
 function lib_runtime.update()
