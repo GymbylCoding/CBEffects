@@ -1,0 +1,12 @@
+--------------------------------------------------------------------------------
+-- build.settings
+--
+-- Landscape
+--------------------------------------------------------------------------------
+
+settings = {
+	orientation = {
+		default = "landscapeLeft",
+		supported = {"landscapeLeft", "landscapeRight"}
+	}
+}

@@ -1,0 +1,17 @@
+--------------------------------------------------------------------------------
+Naming
+--------------------------------------------------------------------------------
+
+Pior to 2.0, a naming convention was used that was not very efficient or easy to use. With 2.0, a new format was introduced, and with it, previous names were changed. Here are the previous names and the new ones.
+
+Old                   | New
+----------------------|-------
+One                   | 1.0.0
+One and One-Fourth    | 1.0.1
+One and One-Half      | 1.1.0
+One and Three-Fourths | 1.1.1
+One and Four-Fifths   | 1.1.2
+Two										| 1.2.0
+Two and One-Fourth    | 1.2.1
+Two and Two-Fifths    | 1.2.2
+Two and Four-Ninths   | 1.2.3

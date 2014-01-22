@@ -1,0 +1,8 @@
+# .gitignore
+
+Etc/graphics.txt
+SampleApp/
+Tutorial/
+Textures/
+wiki/
+misc_cache.txt
