@@ -59,6 +59,8 @@ function vent_core.new(params)
 	vent.id = iterStage.id
 	local alternator = 0
 
+	if vent.parentGroup then vent.parentGroup:insert(vent.content) end
+
 	------------------------------------------------------------------------------
 	-- Emit Particles
 	------------------------------------------------------------------------------
