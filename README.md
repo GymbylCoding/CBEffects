@@ -1,6 +1,10 @@
 ## CBEffects for Corona® SDK
 
+[Love CBEffects and want it to continue to evolve? Please donate! Donations are **greatly** appreciated.](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=EZ9CHTHTGA2XG)
+
 As the ultimate particle effects system of Corona SDK, CBEffects melds ease of use and infinite flexibility to create a vastly powerful engine and a completely new way of creating and managing particle effects. It gives you utter control over the very fabric of each particle to provide the quickest, easiest, and most beatiful visuals Corona SDK can create. Rather than forcing the programmer to stick to tight rules and rigid guidelines, CBEffects allows the programmer to completely customize every minute aspect of their effect, while at the same time allowing the user to step back and let the engine take over, if they so desire. The best part? It's completely free and open-source.
+
+There is now a reference file, named `reference.html`, that is the parameter reference.
 
 #### Licensing 
 

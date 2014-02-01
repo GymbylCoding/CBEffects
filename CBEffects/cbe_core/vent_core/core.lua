@@ -183,7 +183,7 @@ function vent_core.new(params)
 				p._cbe_reserved.xVel, p._cbe_reserved.yVel = velocity.x, velocity.y
 			end
 
-			if vent.onCreationTime == "afterVel" and not onCreationExecuted then vent.onCreation(p, vent, vent.content) onCreationExecuted = true end
+			if not onCreationExecuted and vent.onCreationTime == "afterVel" then vent.onCreation(p, vent, vent.content) onCreationExecuted = true end
 
 			--------------------------------------------------------------------------
 			-- Set Color
@@ -219,7 +219,7 @@ function vent_core.new(params)
 				})
 			end
 
-			if vent.onCreationTime == "afterColor" and not onCreationExecuted then vent.onCreation(p, vent, vent.content) onCreationExecuted = true end
+			if not onCreationExecuted and vent.onCreationTime == "afterColor" then vent.onCreation(p, vent, vent.content) onCreationExecuted = true end
 
 			--------------------------------------------------------------------------
 			-- Set Position
@@ -248,7 +248,7 @@ function vent_core.new(params)
 
 			p._cbe_reserved.prevX, p._cbe_reserved.prevY = p.x, p.y
 
-			if vent.onCreationTime == "afterPosition" and not onCreationExecuted then vent.onCreation(p, vent, vent.content) onCreationExecuted = true end
+			if not onCreationExecuted and vent.onCreationTime == "afterPosition" then vent.onCreation(p, vent, vent.content) onCreationExecuted = true end
 
 			--------------------------------------------------------------------------
 			-- Set Up Particle Transition

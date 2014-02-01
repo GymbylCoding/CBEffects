@@ -26,7 +26,7 @@ function lib_ventframe.newFrame(params, preset)
 
 	params.physics = params.physics or {}
 	preset.physics = preset.physics or {}
-
+	
 	local vent = {
 		calculatedAngles = {},
 		calculatedLinePoints = {},

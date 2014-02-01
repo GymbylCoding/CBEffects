@@ -1,0 +1,667 @@
+<!DOCTYPE HTML>
+<!-- Generated automatically with the Cydoc utility -->
+<!-- Cydoc was written by Caleb Place of Gymbyl Coding -->
+<head>
+	<title>CBEffects Parameter Reference</title>
+	<style type="text/css">body{font-family:Athelas,Cochin,"EB Garamond",Garamont,"Times New Roman",Times;font-weight:400;color:#000;line-height:1;background-color:#0ff;letter-spacing:.1em}h1,h2,h3,h4,h5{font-weight:400}h2{font-size:1.2em}.cydoc-top-title{font-size:1.5em;color:#088;text-align:center}.cydoc-category-title{font-size:1.2em;color:#000}h4{line-height:1;font-weight:400;margin-bottom:0}.cydoc-list-title{color:#000;margin-top:0;margin-bottom:4px;margin-right:1em;text-align:right}p{font-size:10pt;color:#066;text-indent:1em}p.sameline{display:inline;text-indent:0}mini{font-size:.7em}a{color:#0aa;text-decoration:none}a.cydoc-list-label{color:#088}a.code *{color:#fff}a.code:hover *,a:hover{color:#0cc}div{border-style:hidden;text-indent:0;margin-left:0}div.content{margin-left:40px;margin-right:40px}div.cydoc-navbar{margin-bottom:20px;margin-left:20px;margin-right:20px;padding-top:30px;padding-bottom:30px;border-left:solid;border-left-color:#0bb;border-left-width:1px;float:right;min-width:200px}div.cydoc-navbar ul{border-right:solid;border-right-width:1px;border-right-color:#ddd}hr{border-top:solid;border-top-width:1px;border-top-color:#0bb;margin-left:6px;margin-right:6px;margin-top:3px;margin-bottom:3px}footer{font-size:4pt;position:fixed;background-color:#0bb;border-radius:3px;padding:3px;bottom:5px;right:5px;color:#0ff}footer:after{content:"Powered by Cydoc v1.0.3 | Theme: Cydoc Default"}ul{margin-top:4px;margin-bottom:4px;margin-left:10px;padding-top:4px;padding-bottom:4px;padding-left:6px;padding-right:0}li{list-style-type:none;font-size:.8em;line-height:1;display:block;margin-left:0;margin-right:6px;padding-top:4px;padding-bottom:4px;padding-left:10px;padding-right:10px}li.cydoc-list-label{color:#0bb;display:block;text-align:right}li.cydoc-list-label:hover{color:#0ff;background-color:#0bb}li.cydoc-list-label:hover *{color:#0ff}code,pre{font-family:"Ubuntu Mono","Anonymous Pro","Menlo",monospace}code{padding:1px;border-radius:5px;background-color:#0dd}</style>
+</head>
+<!-- Main HTML Content -->
+<html>
+	<h2 class="cydoc-top-title">CBEffects Parameter Reference<br><mini>3.0.0</mini></h2>
+	<!-- Navbar -->
+	<div class="cydoc-navbar">
+		<ul>
+			<h4 class="cydoc-list-title"><a href="#vent-parameters">Vent Parameters</a></h4>
+			<a class="cydoc-list-label" href="#vent-parameters-x"><li class="cydoc-list-label">x</li></a>
+			<a class="cydoc-list-label" href="#vent-parameters-y"><li class="cydoc-list-label">y</li></a>
+			<a class="cydoc-list-label" href="#vent-parameters-contentx"><li class="cydoc-list-label">contentX</li></a>
+			<a class="cydoc-list-label" href="#vent-parameters-contenty"><li class="cydoc-list-label">contentY</li></a>
+			<a class="cydoc-list-label" href="#vent-parameters-build"><li class="cydoc-list-label">build</li></a>
+			<a class="cydoc-list-label" href="#vent-parameters-propertytable"><li class="cydoc-list-label">propertyTable</li></a>
+			<a class="cydoc-list-label" href="#vent-parameters-scale"><li class="cydoc-list-label">scale</li></a>
+			<a class="cydoc-list-label" href="#vent-parameters-scalex"><li class="cydoc-list-label">scaleX</li></a>
+			<a class="cydoc-list-label" href="#vent-parameters-scaley"><li class="cydoc-list-label">scaleY</li></a>
+			<a class="cydoc-list-label" href="#vent-parameters-parentgroup"><li class="cydoc-list-label">parentGroup</li></a>
+			<a class="cydoc-list-label" href="#vent-parameters-isactive"><li class="cydoc-list-label">isActive</li></a>
+			<a class="cydoc-list-label" href="#vent-parameters-title"><li class="cydoc-list-label">title</li></a>
+			<a class="cydoc-list-label" href="#vent-parameters-rotatetowardvel"><li class="cydoc-list-label">rotateTowardVel</li></a>
+			<a class="cydoc-list-label" href="#vent-parameters-towardveloffset"><li class="cydoc-list-label">towardVelOffset</li></a>
+			<a class="cydoc-list-label" href="#vent-parameters-color"><li class="cydoc-list-label">color</li></a>
+			<a class="cydoc-list-label" href="#vent-parameters-cyclecolor"><li class="cydoc-list-label">cycleColor</li></a>
+			<a class="cydoc-list-label" href="#vent-parameters-curcolor"><li class="cydoc-list-label">curColor</li></a>
+			<a class="cydoc-list-label" href="#vent-parameters-colorincr"><li class="cydoc-list-label">colorIncr</li></a>
+			<a class="cydoc-list-label" href="#vent-parameters-emitdelay"><li class="cydoc-list-label">emitDelay</li></a>
+			<a class="cydoc-list-label" href="#vent-parameters-peremit"><li class="cydoc-list-label">perEmit</li></a>
+			<a class="cydoc-list-label" href="#vent-parameters-emissionnum"><li class="cydoc-list-label">emissionNum</li></a>
+			<a class="cydoc-list-label" href="#vent-parameters-startalpha"><li class="cydoc-list-label">startAlpha</li></a>
+			<a class="cydoc-list-label" href="#vent-parameters-lifealpha"><li class="cydoc-list-label">lifeAlpha</li></a>
+			<a class="cydoc-list-label" href="#vent-parameters-endalpha"><li class="cydoc-list-label">endAlpha</li></a>
+			<a class="cydoc-list-label" href="#vent-parameters-intime"><li class="cydoc-list-label">inTime</li></a>
+			<a class="cydoc-list-label" href="#vent-parameters-lifetime"><li class="cydoc-list-label">lifeTime</li></a>
+			<a class="cydoc-list-label" href="#vent-parameters-outtime"><li class="cydoc-list-label">outTime</li></a>
+			<a class="cydoc-list-label" href="#vent-parameters-oncreation"><li class="cydoc-list-label">onCreation</li></a>
+			<a class="cydoc-list-label" href="#vent-parameters-oncreationtime"><li class="cydoc-list-label">onCreationTime</li></a>
+			<a class="cydoc-list-label" href="#vent-parameters-ondeath"><li class="cydoc-list-label">onDeath</li></a>
+			<a class="cydoc-list-label" href="#vent-parameters-onupdate"><li class="cydoc-list-label">onUpdate</li></a>
+			<a class="cydoc-list-label" href="#vent-parameters-onventinit"><li class="cydoc-list-label">onVentInit</li></a>
+			<a class="cydoc-list-label" href="#vent-parameters-onemitbegin"><li class="cydoc-list-label">onEmitBegin</li></a>
+			<a class="cydoc-list-label" href="#vent-parameters-onemitend"><li class="cydoc-list-label">onEmitEnd</li></a>
+			<a class="cydoc-list-label" href="#vent-parameters-positiontype"><li class="cydoc-list-label">positionType</li></a>
+			<a class="cydoc-list-label" href="#vent-parameters-radius"><li class="cydoc-list-label">radius</li></a>
+			<a class="cydoc-list-label" href="#vent-parameters-xradius"><li class="cydoc-list-label">xRadius</li></a>
+			<a class="cydoc-list-label" href="#vent-parameters-yradius"><li class="cydoc-list-label">yRadius</li></a>
+			<a class="cydoc-list-label" href="#vent-parameters-innerradius"><li class="cydoc-list-label">innerRadius</li></a>
+			<a class="cydoc-list-label" href="#vent-parameters-innerxradius"><li class="cydoc-list-label">innerXRadius</li></a>
+			<a class="cydoc-list-label" href="#vent-parameters-inneryradius"><li class="cydoc-list-label">innerYRadius</li></a>
+			<a class="cydoc-list-label" href="#vent-parameters-point1"><li class="cydoc-list-label">point1</li></a>
+			<a class="cydoc-list-label" href="#vent-parameters-point2"><li class="cydoc-list-label">point2</li></a>
+			<a class="cydoc-list-label" href="#vent-parameters-linedensity"><li class="cydoc-list-label">lineDensity</li></a>
+			<a class="cydoc-list-label" href="#vent-parameters-rectleft"><li class="cydoc-list-label">rectLeft</li></a>
+			<a class="cydoc-list-label" href="#vent-parameters-recttop"><li class="cydoc-list-label">rectTop</li></a>
+			<a class="cydoc-list-label" href="#vent-parameters-rectwidth"><li class="cydoc-list-label">rectWidth</li></a>
+			<a class="cydoc-list-label" href="#vent-parameters-rectheight"><li class="cydoc-list-label">rectHeight</li></a>
+			<a class="cydoc-list-label" href="#vent-parameters-pointlist"><li class="cydoc-list-label">pointList</li></a>
+			<a class="cydoc-list-label" href="#vent-parameters-cyclepoint"><li class="cydoc-list-label">cyclePoint</li></a>
+			<a class="cydoc-list-label" href="#vent-parameters-pointincr"><li class="cydoc-list-label">pointIncr</li></a>
+			<a class="cydoc-list-label" href="#vent-parameters-curpoint"><li class="cydoc-list-label">curPoint</li></a>
+		</ul>
+	</div>
+	<!-- Content Div -->
+	<div class="content">
+		<a name="vent-parameters"></a>
+		<h4 class="cydoc-category-title">Vent Parameters</h4>
+		<br>
+		<hr></hr>
+		<br>
+		
+		<a name="vent-parameters-x"></a>
+		<h4 class="cydoc-element-title">x</h4>
+		<mini>
+			&nbsp;&nbsp;Type: number
+			<br>
+			&nbsp;&nbsp;Related: <a href="#vent-parameters-y">y</a>, <a href="#vent-parameters-contentx">contentX</a>, <a href="#vent-parameters-contenty">contentY</a>
+		</mini>
+		<p>The position of the vent on the X-axis.</p>
+		<br>
+		<hr></hr><br>
+		
+		<a name="vent-parameters-y"></a>
+		<h4 class="cydoc-element-title">y</h4>
+		<mini>
+			&nbsp;&nbsp;Type: number
+			<br>
+			&nbsp;&nbsp;Related: <a href="#vent-parameters-x">x</a>, <a href="#vent-parameters-contentx">contentX</a>, <a href="#vent-parameters-contenty">contentY</a>
+		</mini>
+		<p>The position of the vent on the Y-axis.</p>
+		<br>
+		<hr></hr><br>
+		
+		<a name="vent-parameters-contentx"></a>
+		<h4 class="cydoc-element-title">contentX</h4>
+		<mini>
+			&nbsp;&nbsp;Type: number
+			<br>
+			&nbsp;&nbsp;Related: <a href="#vent-parameters-x">x</a>, <a href="#vent-parameters-y">y</a>, <a href="#vent-parameters-contenty">contentY</a>
+		</mini>
+		<p>The position of the vent's content group on the X-axis.</p>
+		<br>
+		<hr></hr><br>
+		
+		<a name="vent-parameters-contenty"></a>
+		<h4 class="cydoc-element-title">contentY</h4>
+		<mini>
+			&nbsp;&nbsp;Type: number
+			<br>
+			&nbsp;&nbsp;Related: <a href="#vent-parameters-x">x</a>, <a href="#vent-parameters-y">y</a>, <a href="#vent-parameters-contentx">contentX</a>
+		</mini>
+		<p>The position of the vent's content group on the Y-axis.</p>
+		<br>
+		<hr></hr><br>
+		
+		<a name="vent-parameters-build"></a>
+		<h4 class="cydoc-element-title">build</h4>
+		<mini>
+			&nbsp;&nbsp;Type: function
+			<br>
+			&nbsp;&nbsp;Related: (none)
+		</mini>
+		<p>A function that builds and returns a display object that CBEffects will use as a particle.</p>
+		<br>
+		<hr></hr><br>
+		
+		<a name="vent-parameters-propertytable"></a>
+		<h4 class="cydoc-element-title">propertyTable</h4>
+		<mini>
+			&nbsp;&nbsp;Type: table
+			<br>
+			&nbsp;&nbsp;Related: (none)
+		</mini>
+		<p>A table of properties that are transferred to each particle on creation.</p>
+		<br>
+		<hr></hr><br>
+		
+		<a name="vent-parameters-scale"></a>
+		<h4 class="cydoc-element-title">scale</h4>
+		<mini>
+			&nbsp;&nbsp;Type: number
+			<br>
+			&nbsp;&nbsp;Related: <a href="#vent-parameters-scalex">scaleX</a>, <a href="#vent-parameters-scaley">scaleY</a>
+		</mini>
+		<p>The scale of the vent. Used as default for <code>scaleX</code> and <code>scaleY</code>.</p>
+		<br>
+		<hr></hr><br>
+		
+		<a name="vent-parameters-scalex"></a>
+		<h4 class="cydoc-element-title">scaleX</h4>
+		<mini>
+			&nbsp;&nbsp;Type: number
+			<br>
+			&nbsp;&nbsp;Related: <a href="#vent-parameters-scale">scale</a>, <a href="#vent-parameters-scaley">scaleY</a>
+		</mini>
+		<p>The scale of the vent on the X-axis. Defaults to <code>scale</code>.</p>
+		<br>
+		<hr></hr><br>
+		
+		<a name="vent-parameters-scaley"></a>
+		<h4 class="cydoc-element-title">scaleY</h4>
+		<mini>
+			&nbsp;&nbsp;Type: number
+			<br>
+			&nbsp;&nbsp;Related: <a href="#vent-parameters-scale">scale</a>, <a href="#vent-parameters-scalex">scaleX</a>
+		</mini>
+		<p>The scale of the vent on the Y-axis. Defaults to <code>scale</code>.</p>
+		<br>
+		<hr></hr><br>
+		
+		<a name="vent-parameters-parentgroup"></a>
+		<h4 class="cydoc-element-title">parentGroup</h4>
+		<mini>
+			&nbsp;&nbsp;Type: Corona display object
+			<br>
+			&nbsp;&nbsp;Related: (none)
+		</mini>
+		<p>The group that the vent's content will be inserted into.</p>
+		<br>
+		<hr></hr><br>
+		
+		<a name="vent-parameters-isactive"></a>
+		<h4 class="cydoc-element-title">isActive</h4>
+		<mini>
+			&nbsp;&nbsp;Type: Boolean
+			<br>
+			&nbsp;&nbsp;Related: (none)
+		</mini>
+		<p>Whether this vent accepts <code>startMaster()</code> and <code>emitMaster()</code> commands in a VentGroup.</p>
+		<br>
+		<hr></hr><br>
+		
+		<a name="vent-parameters-title"></a>
+		<h4 class="cydoc-element-title">title</h4>
+		<mini>
+			&nbsp;&nbsp;Type: string
+			<br>
+			&nbsp;&nbsp;Related: (none)
+		</mini>
+		<p>The access-ID of the vent in a VentGroup. Used in VentGroup commands that apply only to specific vents.</p>
+		<br>
+		<hr></hr><br>
+		
+		<a name="vent-parameters-rotatetowardvel"></a>
+		<h4 class="cydoc-element-title">rotateTowardVel</h4>
+		<mini>
+			&nbsp;&nbsp;Type: Boolean
+			<br>
+			&nbsp;&nbsp;Related: <a href="#vent-parameters-towardveloffset">towardVelOffset</a>
+		</mini>
+		<p>Whether particles rotate to face the direction they are travelling.</p>
+		<br>
+		<hr></hr><br>
+		
+		<a name="vent-parameters-towardveloffset"></a>
+		<h4 class="cydoc-element-title">towardVelOffset</h4>
+		<mini>
+			&nbsp;&nbsp;Type: number
+			<br>
+			&nbsp;&nbsp;Related: <a href="#vent-parameters-rotatetowardvel">rotateTowardVel</a>
+		</mini>
+		<p>An offset by which particles are rotated toward their direction if <code>rotateTowardVel</code> is enabled.</p>
+		<br>
+		<hr></hr><br>
+		
+		<a name="vent-parameters-color"></a>
+		<h4 class="cydoc-element-title">color</h4>
+		<mini>
+			&nbsp;&nbsp;Type: table
+			<br>
+			&nbsp;&nbsp;Related: <a href="#vent-parameters-cyclecolor">cycleColor</a>, <a href="#vent-parameters-curcolor">curColor</a>, <a href="#vent-parameters-colorincr">colorIncr</a>
+		</mini>
+		<p>A table containing inner tables that specify the color of particles. The inner tables must be in the form of <code>{r, g, b}</code>.</p>
+		<br>
+		<hr></hr><br>
+		
+		<a name="vent-parameters-cyclecolor"></a>
+		<h4 class="cydoc-element-title">cycleColor</h4>
+		<mini>
+			&nbsp;&nbsp;Type: Boolean
+			<br>
+			&nbsp;&nbsp;Related: <a href="#vent-parameters-color">color</a>, <a href="#vent-parameters-curcolor">curColor</a>, <a href="#vent-parameters-colorincr">colorIncr</a>
+		</mini>
+		<p>If set to <code>true</code>, particle colors will be cycled through in order. If set to <code>false</code>, particles will be colored randomly from the color table.</p>
+		<br>
+		<hr></hr><br>
+		
+		<a name="vent-parameters-curcolor"></a>
+		<h4 class="cydoc-element-title">curColor</h4>
+		<mini>
+			&nbsp;&nbsp;Type: number
+			<br>
+			&nbsp;&nbsp;Related: <a href="#vent-parameters-color">color</a>, <a href="#vent-parameters-cyclecolor">cycleColor</a>, <a href="#vent-parameters-colorincr">colorIncr</a>
+		</mini>
+		<p>The color color cycling starts with if <code>cycleColor</code> is <code>true</code>.</p>
+		<br>
+		<hr></hr><br>
+		
+		<a name="vent-parameters-colorincr"></a>
+		<h4 class="cydoc-element-title">colorIncr</h4>
+		<mini>
+			&nbsp;&nbsp;Type: number
+			<br>
+			&nbsp;&nbsp;Related: <a href="#vent-parameters-color">color</a>, <a href="#vent-parameters-cyclecolor">cycleColor</a>, <a href="#vent-parameters-curcolor">curColor</a>
+		</mini>
+		<p>The value by which the current color is incremented if <code>cycleColor</code> is <code>true</code>.</p>
+		<br>
+		<hr></hr><br>
+		
+		<a name="vent-parameters-emitdelay"></a>
+		<h4 class="cydoc-element-title">emitDelay</h4>
+		<mini>
+			&nbsp;&nbsp;Type: number
+			<br>
+			&nbsp;&nbsp;Related: <a href="#vent-parameters-peremit">perEmit</a>, <a href="#vent-parameters-emissionnum">emissionNum</a>
+		</mini>
+		<p>The delay between particle emission sequences.</p>
+		<br>
+		<hr></hr><br>
+		
+		<a name="vent-parameters-peremit"></a>
+		<h4 class="cydoc-element-title">perEmit</h4>
+		<mini>
+			&nbsp;&nbsp;Type: number
+			<br>
+			&nbsp;&nbsp;Related: <a href="#vent-parameters-emitdelay">emitDelay</a>, <a href="#vent-parameters-emissionnum">emissionNum</a>
+		</mini>
+		<p>The number of particles emitted for each emission sequence.</p>
+		<br>
+		<hr></hr><br>
+		
+		<a name="vent-parameters-emissionnum"></a>
+		<h4 class="cydoc-element-title">emissionNum</h4>
+		<mini>
+			&nbsp;&nbsp;Type: number
+			<br>
+			&nbsp;&nbsp;Related: <a href="#vent-parameters-emitdelay">emitDelay</a>, <a href="#vent-parameters-peremit">perEmit</a>
+		</mini>
+		<p>The number of emission sequences to toggle when <code>vent.start()</code> is called.</p>
+		<br>
+		<hr></hr><br>
+		
+		<a name="vent-parameters-startalpha"></a>
+		<h4 class="cydoc-element-title">startAlpha</h4>
+		<mini>
+			&nbsp;&nbsp;Type: number
+			<br>
+			&nbsp;&nbsp;Related: <a href="#vent-parameters-lifealpha">lifeAlpha</a>, <a href="#vent-parameters-endalpha">endAlpha</a>
+		</mini>
+		<p>The alpha particles are when they are created.</p>
+		<br>
+		<hr></hr><br>
+		
+		<a name="vent-parameters-lifealpha"></a>
+		<h4 class="cydoc-element-title">lifeAlpha</h4>
+		<mini>
+			&nbsp;&nbsp;Type: number
+			<br>
+			&nbsp;&nbsp;Related: <a href="#vent-parameters-startalpha">startAlpha</a>, <a href="#vent-parameters-endalpha">endAlpha</a>
+		</mini>
+		<p>The alpha particles are during their life span.</p>
+		<br>
+		<hr></hr><br>
+		
+		<a name="vent-parameters-endalpha"></a>
+		<h4 class="cydoc-element-title">endAlpha</h4>
+		<mini>
+			&nbsp;&nbsp;Type: number
+			<br>
+			&nbsp;&nbsp;Related: <a href="#vent-parameters-startalpha">startAlpha</a>, <a href="#vent-parameters-lifealpha">lifeAlpha</a>
+		</mini>
+		<p>The alpha particles are when they are destroyed.</p>
+		<br>
+		<hr></hr><br>
+		
+		<a name="vent-parameters-intime"></a>
+		<h4 class="cydoc-element-title">inTime</h4>
+		<mini>
+			&nbsp;&nbsp;Type: number
+			<br>
+			&nbsp;&nbsp;Related: <a href="#vent-parameters-lifetime">lifeTime</a>, <a href="#vent-parameters-outtime">outTime</a>
+		</mini>
+		<p>The duration of the transition from startAlpha to lifeAlpha.</p>
+		<br>
+		<hr></hr><br>
+		
+		<a name="vent-parameters-lifetime"></a>
+		<h4 class="cydoc-element-title">lifeTime</h4>
+		<mini>
+			&nbsp;&nbsp;Type: number
+			<br>
+			&nbsp;&nbsp;Related: <a href="#vent-parameters-intime">inTime</a>, <a href="#vent-parameters-outtime">outTime</a>
+		</mini>
+		<p>The duration of the particle's life span, when no alpha changes are taking place and the particle's alpha is <code>lifeAlpha</code>.</p>
+		<br>
+		<hr></hr><br>
+		
+		<a name="vent-parameters-outtime"></a>
+		<h4 class="cydoc-element-title">outTime</h4>
+		<mini>
+			&nbsp;&nbsp;Type: number
+			<br>
+			&nbsp;&nbsp;Related: <a href="#vent-parameters-intime">inTime</a>, <a href="#vent-parameters-lifetime">lifeTime</a>
+		</mini>
+		<p>The duration of the transition from <code>lifeAlpha</code> to <code>endAlpha</code>.</p>
+		<br>
+		<hr></hr><br>
+		
+		<a name="vent-parameters-oncreation"></a>
+		<h4 class="cydoc-element-title">onCreation</h4>
+		<mini>
+			&nbsp;&nbsp;Type: function
+			<br>
+			&nbsp;&nbsp;Related: <a href="#vent-parameters-oncreationtime">onCreationTime</a>, <a href="#vent-parameters-ondeath">onDeath</a>, <a href="#vent-parameters-onupdate">onUpdate</a>
+		</mini>
+		<p>A function called when a particle is created. The particle, the vent, and the vent's content group are passed as arguments.</p>
+		<br>
+		<hr></hr><br>
+		
+		<a name="vent-parameters-oncreationtime"></a>
+		<h4 class="cydoc-element-title">onCreationTime</h4>
+		<mini>
+			&nbsp;&nbsp;Type: string
+			<br>
+			&nbsp;&nbsp;Related: <a href="#vent-parameters-oncreation">onCreation</a>
+		</mini>
+		<p>When during the particle's creation sequence to call the onCreation function.</p>
+		<p>Supported Values: 
+		<ul>
+			<li><code>afterBuild</code>: Calls the function directly after the particle is built. The particle has only the CBEffects particle core methods and values.</li>
+			<li><code>afterVel</code>: Calls the function once the particle's velocity has been set.</li>
+			<li><code>afterColor</code>: Calls the function once the particle has been colored and has the <code>.colorChange()</code> function available.</li>
+			<li><code>afterPosition</code>: Calls the function once the particle has been positioned.</li>
+		</ul>
+		</p>
+		<br>
+		<hr></hr><br>
+		
+		<a name="vent-parameters-ondeath"></a>
+		<h4 class="cydoc-element-title">onDeath</h4>
+		<mini>
+			&nbsp;&nbsp;Type: function
+			<br>
+			&nbsp;&nbsp;Related: <a href="#vent-parameters-oncreation">onCreation</a>, <a href="#vent-parameters-onupdate">onUpdate</a>
+		</mini>
+		<p>A function called when the particle's life span is over and it is destroyed. The particle, the vent, and the vent's content group are passed as arguments.</p>
+		<br>
+		<hr></hr><br>
+		
+		<a name="vent-parameters-onupdate"></a>
+		<h4 class="cydoc-element-title">onUpdate</h4>
+		<mini>
+			&nbsp;&nbsp;Type: function
+			<br>
+			&nbsp;&nbsp;Related: <a href="#vent-parameters-oncreation">onCreation</a>, <a href="#vent-parameters-ondeath">onDeath</a>
+		</mini>
+		<p>A function called each frame for each particle that is updated. The particle, the vent, and the vent's content group are passed as arguments.</p>
+		<br>
+		<hr></hr><br>
+		
+		<a name="vent-parameters-onventinit"></a>
+		<h4 class="cydoc-element-title">onVentInit</h4>
+		<mini>
+			&nbsp;&nbsp;Type: function
+			<br>
+			&nbsp;&nbsp;Related: (none)
+		</mini>
+		<p>A function called when a vent is created using the parameters. The vent is passed as an argument.  This is a good place to set up extra vent properties or custom values.</p>
+		<br>
+		<hr></hr><br>
+		
+		<a name="vent-parameters-onemitbegin"></a>
+		<h4 class="cydoc-element-title">onEmitBegin</h4>
+		<mini>
+			&nbsp;&nbsp;Type: function
+			<br>
+			&nbsp;&nbsp;Related: <a href="#vent-parameters-onemitend">onEmitEnd</a>
+		</mini>
+		<p>A function called directly before an emission sequence begins.</p>
+		<br>
+		<hr></hr><br>
+		
+		<a name="vent-parameters-onemitend"></a>
+		<h4 class="cydoc-element-title">onEmitEnd</h4>
+		<mini>
+			&nbsp;&nbsp;Type: function
+			<br>
+			&nbsp;&nbsp;Related: <a href="#vent-parameters-onemitbegin">onEmitBegin</a>
+		</mini>
+		<p>A function called directly after an emission sequence ends.</p>
+		<br>
+		<hr></hr><br>
+		
+		<a name="vent-parameters-positiontype"></a>
+		<h4 class="cydoc-element-title">positionType</h4>
+		<mini>
+			&nbsp;&nbsp;Type: string
+			<br>
+			&nbsp;&nbsp;Related: <a href="#vent-parameters-radius">radius</a>, <a href="#vent-parameters-xradius">xRadius</a>, <a href="#vent-parameters-yradius">yRadius</a>, <a href="#vent-parameters-innerradius">innerRadius</a>, <a href="#vent-parameters-innerxradius">innerXRadius</a>, <a href="#vent-parameters-inneryradius">innerYRadius</a>, <a href="#vent-parameters-point1">point1</a>, <a href="#vent-parameters-point2">point2</a>, <a href="#vent-parameters-linedensity">lineDensity</a>, <a href="#vent-parameters-rectleft">rectLeft</a>, <a href="#vent-parameters-recttop">rectTop</a>, <a href="#vent-parameters-rectwidth">rectWidth</a>, <a href="#vent-parameters-rectheight">rectHeight</a>, <a href="#vent-parameters-pointlist">pointList</a>, <a href="#vent-parameters-cyclepoint">cyclePoint</a>, <a href="#vent-parameters-curpoint">curPoint</a>, <a href="#vent-parameters-x">x</a>, <a href="#vent-parameters-y">y</a>
+		</mini>
+		<p>Specifies the way particles are positioned.</p>
+		<p>Supported Values: 
+		<ul>
+			<li><code>inRadius</code>: Makes particles appear inside an elliptical shape. To customize, see <code>radius</code>, <code>xRadius</code>, <code>yRadius</code>, <code>innerRadius</code>, <code>innerXRadius</code>, and <code>innerYRadius</code>.</li>
+			<li><code>alongLine</code>: Makes particles appear along a line. To customize, see <code>point1</code>, <code>point2</code>, and <code>lineDensity</code>.</li>
+			<li><code>inRect</code>: Makes particles appear inside of a rectangle. To customize, see <code>rectLeft</code>, <code>rectTop</code>, <code>rectWidth</code>, and <code>rectHeight</code>.</li>
+			<li><code>atPoint</code>: Makes particles appear at a single <code>(x, y)</code> point. To customize, see <code>x</code> and <code>y</code>.</li>
+			<li><code>fromPointList</code>: Makes particles appear on multiple points from the <code>pointList</code>. To customize, see <code>pointList</code>, and <code>cyclePoint</code>.</li>
+			<li><code>custom function</code>: Position particles using your own custom function. It must return two numbers, <code>x</code> and <code>y</code>, respectively. To use this capability, make this parameter, <code>positionType</code>, a function.</li>
+		</ul>
+		</p>
+		<br>
+		<hr></hr><br>
+		
+		<a name="vent-parameters-radius"></a>
+		<h4 class="cydoc-element-title">radius</h4>
+		<mini>
+			&nbsp;&nbsp;Type: number
+			<br>
+			&nbsp;&nbsp;Related: <a href="#vent-parameters-positiontype">positionType</a>, <a href="#vent-parameters-xradius">xRadius</a>, <a href="#vent-parameters-yradius">yRadius</a>, <a href="#vent-parameters-innerradius">innerRadius</a>, <a href="#vent-parameters-innerxradius">innerXRadius</a>, <a href="#vent-parameters-inneryradius">innerYRadius</a>
+		</mini>
+		<p>The master size of the ellipse particles will appear in if <code>positionType</code> is <code>inRadius</code>. Acts as a default for <code>xRadius</code> and <code>yRadius</code>.</p>
+		<br>
+		<hr></hr><br>
+		
+		<a name="vent-parameters-xradius"></a>
+		<h4 class="cydoc-element-title">xRadius</h4>
+		<mini>
+			&nbsp;&nbsp;Type: number
+			<br>
+			&nbsp;&nbsp;Related: <a href="#vent-parameters-positiontype">positionType</a>, <a href="#vent-parameters-radius">radius</a>, <a href="#vent-parameters-yradius">yRadius</a>, <a href="#vent-parameters-innerradius">innerRadius</a>, <a href="#vent-parameters-innerxradius">innerXRadius</a>, <a href="#vent-parameters-inneryradius">innerYRadius</a>
+		</mini>
+		<p>The half-width of the ellipse particles will appear in if <code>positionType</code> is <code>inRadius</code>. Defaults to <code>radius</code>.</p>
+		<br>
+		<hr></hr><br>
+		
+		<a name="vent-parameters-yradius"></a>
+		<h4 class="cydoc-element-title">yRadius</h4>
+		<mini>
+			&nbsp;&nbsp;Type: number
+			<br>
+			&nbsp;&nbsp;Related: <a href="#vent-parameters-positiontype">positionType</a>, <a href="#vent-parameters-radius">radius</a>, <a href="#vent-parameters-xradius">xRadius</a>, <a href="#vent-parameters-innerradius">innerRadius</a>, <a href="#vent-parameters-innerxradius">innerXRadius</a>, <a href="#vent-parameters-inneryradius">innerYRadius</a>
+		</mini>
+		<p>The half-height of the ellipse particles will appear in if <code>positionType</code> is <code>inRadius</code>. Defaults to <code>radius</code>.</p>
+		<br>
+		<hr></hr><br>
+		
+		<a name="vent-parameters-innerradius"></a>
+		<h4 class="cydoc-element-title">innerRadius</h4>
+		<mini>
+			&nbsp;&nbsp;Type: number
+			<br>
+			&nbsp;&nbsp;Related: <a href="#vent-parameters-positiontype">positionType</a>, <a href="#vent-parameters-radius">radius</a>, <a href="#vent-parameters-xradius">xRadius</a>, <a href="#vent-parameters-yradius">yRadius</a>, <a href="#vent-parameters-innerxradius">innerXRadius</a>, <a href="#vent-parameters-inneryradius">innerYRadius</a>
+		</mini>
+		<p>The master size of the ellipse particles will be blocked from appearing in if <code>positionType</code> is <code>inRadius</code>. Acts as a default for <code>innerXRadius</code> and <code>innerYRadius</code>.</p>
+		<br>
+		<hr></hr><br>
+		
+		<a name="vent-parameters-innerxradius"></a>
+		<h4 class="cydoc-element-title">innerXRadius</h4>
+		<mini>
+			&nbsp;&nbsp;Type: number
+			<br>
+			&nbsp;&nbsp;Related: <a href="#vent-parameters-positiontype">positionType</a>, <a href="#vent-parameters-radius">radius</a>, <a href="#vent-parameters-xradius">xRadius</a>, <a href="#vent-parameters-yradius">yRadius</a>, <a href="#vent-parameters-innerradius">innerRadius</a>, <a href="#vent-parameters-inneryradius">innerYRadius</a>
+		</mini>
+		<p>The half-width of the ellipse particles will be blocked from appearing in if <code>positionType</code> is <code>inRadius</code>. Defaults to <code>innerRadius</code>.</p>
+		<br>
+		<hr></hr><br>
+		
+		<a name="vent-parameters-inneryradius"></a>
+		<h4 class="cydoc-element-title">innerYRadius</h4>
+		<mini>
+			&nbsp;&nbsp;Type: number
+			<br>
+			&nbsp;&nbsp;Related: <a href="#vent-parameters-positiontype">positionType</a>, <a href="#vent-parameters-radius">radius</a>, <a href="#vent-parameters-xradius">xRadius</a>, <a href="#vent-parameters-yradius">yRadius</a>, <a href="#vent-parameters-innerradius">innerRadius</a>, <a href="#vent-parameters-innerxradius">innerXRadius</a>
+		</mini>
+		<p>The half-height of the ellipse particles will be blocked from appearing in if <code>positionType</code> is <code>inRadius</code>. Defaults to <code>innerRadius</code>.</p>
+		<br>
+		<hr></hr><br>
+		
+		<a name="vent-parameters-point1"></a>
+		<h4 class="cydoc-element-title">point1</h4>
+		<mini>
+			&nbsp;&nbsp;Type: table
+			<br>
+			&nbsp;&nbsp;Related: <a href="#vent-parameters-positiontype">positionType</a>, <a href="#vent-parameters-point2">point2</a>, <a href="#vent-parameters-linedensity">lineDensity</a>
+		</mini>
+		<p>The <code>(x, y)</code> location of the first point of the line particles will appear on if <code>positionType</code> is <code>alongLine</code>. Provided in the form of <code>{x, y}</code>.</p>
+		<br>
+		<hr></hr><br>
+		
+		<a name="vent-parameters-point2"></a>
+		<h4 class="cydoc-element-title">point2</h4>
+		<mini>
+			&nbsp;&nbsp;Type: table
+			<br>
+			&nbsp;&nbsp;Related: <a href="#vent-parameters-positiontype">positionType</a>, <a href="#vent-parameters-point1">point1</a>, <a href="#vent-parameters-linedensity">lineDensity</a>
+		</mini>
+		<p>The <code>(x, y)</code> location of the second point of the line particles will appear on if <code>positionType</code> is <code>alongLine</code>. Provided in the form of <code>{x, y}</code>.</p>
+		<br>
+		<hr></hr><br>
+		
+		<a name="vent-parameters-linedensity"></a>
+		<h4 class="cydoc-element-title">lineDensity</h4>
+		<mini>
+			&nbsp;&nbsp;Type: table
+			<br>
+			&nbsp;&nbsp;Related: <a href="#vent-parameters-positiontype">positionType</a>, <a href="#vent-parameters-point1">point1</a>, <a href="#vent-parameters-point2">point2</a>
+		</mini>
+		<p>The number of points to calculate along the line if <code>positionType</code> is <code>alongLine</code>. If set to the string <code>total</code>, will make an unbroken line.</p>
+		<br>
+		<hr></hr><br>
+		
+		<a name="vent-parameters-rectleft"></a>
+		<h4 class="cydoc-element-title">rectLeft</h4>
+		<mini>
+			&nbsp;&nbsp;Type: number
+			<br>
+			&nbsp;&nbsp;Related: <a href="#vent-parameters-positiontype">positionType</a>, <a href="#vent-parameters-recttop">rectTop</a>, <a href="#vent-parameters-rectwidth">rectWidth</a>, <a href="#vent-parameters-rectheight">rectHeight</a>
+		</mini>
+		<p>The left side of the rectangle particles appear inside if <code>positionType</code> is <code>inRect</code>.</p>
+		<br>
+		<hr></hr><br>
+		
+		<a name="vent-parameters-recttop"></a>
+		<h4 class="cydoc-element-title">rectTop</h4>
+		<mini>
+			&nbsp;&nbsp;Type: number
+			<br>
+			&nbsp;&nbsp;Related: <a href="#vent-parameters-positiontype">positionType</a>, <a href="#vent-parameters-rectleft">rectLeft</a>, <a href="#vent-parameters-rectwidth">rectWidth</a>, <a href="#vent-parameters-rectheight">rectHeight</a>
+		</mini>
+		<p>The top side of the rectangle particles appear inside if <code>positionType</code> is <code>inRect</code>.</p>
+		<br>
+		<hr></hr><br>
+		
+		<a name="vent-parameters-rectwidth"></a>
+		<h4 class="cydoc-element-title">rectWidth</h4>
+		<mini>
+			&nbsp;&nbsp;Type: number
+			<br>
+			&nbsp;&nbsp;Related: <a href="#vent-parameters-positiontype">positionType</a>, <a href="#vent-parameters-rectleft">rectLeft</a>, <a href="#vent-parameters-recttop">rectTop</a>, <a href="#vent-parameters-rectheight">rectHeight</a>
+		</mini>
+		<p>The width of the rectangle particles appear inside if <code>positionType</code> is <code>inRect</code>.</p>
+		<br>
+		<hr></hr><br>
+		
+		<a name="vent-parameters-rectheight"></a>
+		<h4 class="cydoc-element-title">rectHeight</h4>
+		<mini>
+			&nbsp;&nbsp;Type: number
+			<br>
+			&nbsp;&nbsp;Related: <a href="#vent-parameters-positiontype">positionType</a>, <a href="#vent-parameters-rectleft">rectLeft</a>, <a href="#vent-parameters-recttop">rectTop</a>, <a href="#vent-parameters-rectwidth">rectWidth</a>
+		</mini>
+		<p>The height of the rectangle particles appear inside if <code>positionType</code> is <code>inRect</code>.</p>
+		<br>
+		<hr></hr><br>
+		
+		<a name="vent-parameters-pointlist"></a>
+		<h4 class="cydoc-element-title">pointList</h4>
+		<mini>
+			&nbsp;&nbsp;Type: table
+			<br>
+			&nbsp;&nbsp;Related: <a href="#vent-parameters-positiontype">positionType</a>, <a href="#vent-parameters-cyclepoint">cyclePoint</a>, <a href="#vent-parameters-pointincr">pointIncr</a>, <a href="#vent-parameters-curpoint">curPoint</a>
+		</mini>
+		<p>The list of points particles will appear in if <code>positionType</code> is <code>fromPointList</code>. Provided in the form of <code>{{x, y}, {x, y}, {x, y}, ... }</code>.</p>
+		<br>
+		<hr></hr><br>
+		
+		<a name="vent-parameters-cyclepoint"></a>
+		<h4 class="cydoc-element-title">cyclePoint</h4>
+		<mini>
+			&nbsp;&nbsp;Type: Boolean
+			<br>
+			&nbsp;&nbsp;Related: <a href="#vent-parameters-positiontype">positionType</a>, <a href="#vent-parameters-pointlist">pointList</a>, <a href="#vent-parameters-pointincr">pointIncr</a>, <a href="#vent-parameters-curpoint">curPoint</a>
+		</mini>
+		<p>Whether points are chosen in order or randomly from the <code>pointTable</code> if <code>positionType</code> is <code>fromPointList</code>. If set to <code>true</code>, points are chosen in order. If <code>false</code>, they are picked randomly.</p>
+		<br>
+		<hr></hr><br>
+		
+		<a name="vent-parameters-pointincr"></a>
+		<h4 class="cydoc-element-title">pointIncr</h4>
+		<mini>
+			&nbsp;&nbsp;Type: Boolean
+			<br>
+			&nbsp;&nbsp;Related: <a href="#vent-parameters-positiontype">positionType</a>, <a href="#vent-parameters-pointlist">pointList</a>, <a href="#vent-parameters-cyclepoint">cyclePoint</a>, <a href="#vent-parameters-curpoint">curPoint</a>
+		</mini>
+		<p>The value by which the current point is incremented if <code>cyclePoint</code> is <code>true</code>.</p>
+		<br>
+		<hr></hr><br>
+		
+		<a name="vent-parameters-curpoint"></a>
+		<h4 class="cydoc-element-title">curPoint</h4>
+		<mini>
+			&nbsp;&nbsp;Type: Boolean
+			<br>
+			&nbsp;&nbsp;Related: <a href="#vent-parameters-positiontype">positionType</a>, <a href="#vent-parameters-pointlist">pointList</a>, <a href="#vent-parameters-pointincr">pointIncr</a>, <a href="#vent-parameters-curpoint">curPoint</a>
+		</mini>
+		<p>The point point cycling starts with if <code>positionType</code> is <code>fromPointList</code>.</p>
+		<br>
+		<footer></footer>
+	</div>
+</html>

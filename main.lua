@@ -8,7 +8,6 @@ display.setStatusBar(display.HiddenStatusBar)
 -- Create Sample Effect
 --------------------------------------------------------------------------------
 local CBE = require("CBEffects.Library")
-local runtime = require("CBEffects.cbe_core.misc.runtime")
 
 local t = display.newText{
 	-- Manual kerning for fun and profit:
@@ -25,5 +24,3 @@ local vent = CBE.newVent {
 }
 
 vent:start()
-
---Runtime:addEventListener("enterFrame", function() print(display.fps / runtime.delta) end)

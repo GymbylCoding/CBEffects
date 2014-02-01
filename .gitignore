@@ -3,3 +3,5 @@
 Etc/graphics.txt
 clink.lua
 misc_cache.txt
+cydoc/
+ivory.lua
