@@ -46,7 +46,7 @@ Resources
 Removed OldSamples folder
 Rmoved demo app (needs rewriting for 3.0)
 Added several samples to the SampleCache
-Rewrote non-relavent CBGadgets
+Rewrote non-relevant CBGadgets
 
 Core
 --------------------
