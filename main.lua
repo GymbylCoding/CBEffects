@@ -16,8 +16,7 @@ local t = display.newText{
 	fontSize = 30
 }
 
-t.x, t.y = display.contentCenterX, t.height * 0.5 + 10
-
+t.x,t.y = display.contentCenterX, t.height * 0.5 + 10
 
 local vent = CBE.newVent {
 	preset = "burn"

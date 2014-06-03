@@ -1,21 +1,15 @@
 --------------------------------------------------------------------------------
 --[[
-InRadius1
+BasicRadius
 
-Inner and outer radius positioning of particles.
+Basic use of "radius" parameter for inRadius position type vents.
 --]]
 --------------------------------------------------------------------------------
 
 local CBE = require("CBEffects.Library")
 
 local vent = CBE.newVent {
-	preset = "evil",
-	positionType = "inRadius",
-	radius = 100,
-	innerRadius = 60,
-	physics = {
-		velocity = 0
-	}
+	radius = display.contentCenterY * 0.5
 }
 
 vent:start()

@@ -11,7 +11,7 @@ Also just a plain-text version of the parameter reference.
 !!----------------------------------------------------------------------------!!
 !cydoc-prefs! -> [
 	title -> "CBEffects Parameter Reference"
-	version -> "3.0.0"
+	version -> "3.1"
 	write_as_code -> [
 		supported_values -> true
 	]

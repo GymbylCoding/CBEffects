@@ -46,7 +46,7 @@ function lib_runtime.update()
 	vents.removeMarked()
 	fields.removeMarked()
 
-	for v in vents() do
+	for v in vents.items() do
 		v._cbe_reserved.updateParticles()
 	end
 end

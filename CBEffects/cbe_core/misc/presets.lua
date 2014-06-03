@@ -24,6 +24,14 @@ local angleBetween = lib_functions.angleBetween
 local burnColors = {{1, 0, 0}, {1, 1, 0}, {1, 1, 0}, {1, 1, 0}}
 
 --------------------------------------------------------------------------------
+-- List of Supported Presets
+--------------------------------------------------------------------------------
+presets.supported = {
+	vents = {"aurora", "beams", "burn", "circles", "confetti", "embers", "evil", "flame", "fluid", "fountain", "hyperspace", "lasergun", "rain", "smoke", "snow", "sparks", "steam", "water", "waterfall"},
+	fields = {"out", "colorchange", "rotate", "stop"}
+}
+
+--------------------------------------------------------------------------------
 -- Vent Presets
 --------------------------------------------------------------------------------
 presets.vents = {
@@ -77,7 +85,7 @@ presets.vents = {
 			angularVelocity = 0.04,
 		}
 	},
-	
+
 	------------------------------------------------------------------------------
 	-- Burn
 	------------------------------------------------------------------------------
@@ -461,7 +469,7 @@ presets.vents = {
 				p.isVisible = false
 			else
 				p.yScale = a
-			end 
+			end
 		end,
 		onUpdate = function(p)
 			local a = (p.y - (screen.height / 3)) / 500 + 0.05
@@ -469,7 +477,7 @@ presets.vents = {
 				p.isVisible = false
 			else
 				p.yScale = a
-			end 
+			end
 		end,
 		physics = {
 			velocity = 1,
@@ -511,8 +519,8 @@ presets.vents = {
 -- Field Presets
 --------------------------------------------------------------------------------
 presets.fields = {
-	default = {}, 
-	
+	default = {},
+
 	------------------------------------------------------------------------------
 	-- Out
 	------------------------------------------------------------------------------
@@ -543,7 +551,7 @@ presets.fields = {
 			p:rotate(2)
 		end
 	},
-	
+
 	------------------------------------------------------------------------------
 	-- Stop
 	------------------------------------------------------------------------------

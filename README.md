@@ -6,7 +6,7 @@ As the ultimate particle effects system of Corona SDK, CBEffects melds ease of u
 
 There is now a reference file, named `reference.html`, that is the parameter reference.
 
-#### Licensing 
+#### Licensing
 
 Distributed under the TSL:
 - This project is free to get
@@ -31,71 +31,22 @@ That's it!
 
 Please start using `.newVent()` and `.newVentGroup()` rather than `.NewVent()` and `.VentGroup()`; do the same for fields. The original function calls will still work, but it's recommended that you switch to the new name for conformity.
 
-#### Last Library Update 
+#### Last Library Update
 
-Version Name: 3.0 
+Version Name: 3.1
+Released: June 2014
 
-Released: January 2014 
+A quick update to freshen things up.
 
-To upgrade for the Corona graphics library upgrade, a new release of CBEffects has been written and turned CBEffects back into the "one particle system to rule them all". With a completely rewritten core engine, new capabilities, numerous minor enhancements, and a new internal multi-file format, CBEffects 3.0 is the most advanced version yet of the most advanced Corona SDK particle system yet.
-
-"Real" Changelog:
+Changelog:
 ```
 Resources
 --------------------
-Removed OldSamples folder
-Rmoved demo app (needs rewriting for 3.0)
-Added several samples to the SampleCache
-Rewrote non-relevant CBGadgets
+Added samples to the SampleCache
+Removed reference.cy
 
 Core
 --------------------
-Split into multiple files
-Speed improvements
-Improved security
-Better code format
-
-Vent Miscellany
---------------------
-Preset names are now case-insensitive
-Removed preset "wisps"
-Removed preset "jitter"
-
-Vent Parameters
---------------------
-Note: Each old parameter has been deprecated, but they still serve as an alias for the new name.
-
-Changed or Deleted:
-	fadeInTime           is now inTime
-	lifeStart             "  "  lifeTime
-	lifeSpan              "  "  outTime
-	iteratePoint          "  "  cyclePoint
-	iterateColor          "  "  cycleColor
-	offsetAlongLine       "  "  [deleted, now default behavior]
-	posRadius             "  "  radius
-	posInner              "  "  innerRadius
-	physics.preCalculate  "  "  physics.preCalculateAngles
-	physics.maxX          "  "  maxScaleX
-	physics.maxY          "  "  maxScaleY
-	physics.minX          "  "  minScaleX
-	physics.minY          "  "  minScaleY
-	physics.useFunction   "  "  physics.useVelFunction
-	physics.iterateAngle  "  "  physics.cycleAngle
-
-New Parameters:
-	xRadius
-	yRadius
-	innerXRadius
-	innerYRadius
-
-Field Miscellany
---------------------
-New format for polygon points: {x,y, x,y, x,y} is now {{x, y}, {x, y}, {x, y}}
-
-Particle Miscellany
---------------------
-Cleaned up particle structure
-particle:setLinearVelocity() is now particle:setVelocity()
-particle.angularVelocity = x is now particle:setAngularVelocity()
-particle.colorChange() is now particle.changeColor()
+Various speed improvements
+Minor enhancements
 ```

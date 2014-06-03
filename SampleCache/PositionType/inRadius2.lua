@@ -1,6 +1,6 @@
 --------------------------------------------------------------------------------
 --[[
-inRadius2
+InRadius2
 
 Elliptical positioning of particles.
 --]]

@@ -54,7 +54,7 @@ function lib_iterator.newStage(masterVent)
 	end
 
 	function stage.unlinkAllFields()
-		for field in fields() do
+		for field in fields.items() do
 			fields.markForRemoval(field._cbe_reserved[vstTitle])
 		end
 		fields.removeMarked()
@@ -66,7 +66,7 @@ function lib_iterator.newStage(masterVent)
 	function stage.updateParticle(this)
 		local delta = lib_runtime.delta
 		local vals = this._cbe_reserved
-		
+
 		if (not this) or (vals.killed) then return false end
 		this._numUpdates = this._numUpdates + 1
 
@@ -138,7 +138,7 @@ function lib_iterator.newStage(masterVent)
 		----------------------------------------------------------------------------
 		-- Field Collisions
 		----------------------------------------------------------------------------
-		for field in fields() do
+		for field in fields.items() do
 			if field._cbe_reserved.enabled then
 				field._cbe_reserved.execute(this)
 			end

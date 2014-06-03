@@ -30,18 +30,8 @@ function lib_vst.new(storeAs)
 	local markedIndices = {}
 	local remove = {}
 	local removeIndex = 0
-	
-	------------------------------------------------------------------------------
-	-- Edit Indices
-	------------------------------------------------------------------------------
-	local function editIndices(startingIndex, endingIndex, n, ...)
-		if not endingIndex then endingIndex = #stored end
+	vst._stored = stored
 
-		for i = startingIndex, endingIndex do
-			stored[i]._cbe_reserved[storeAs] = stored[i]._cbe_reserved[storeAs] + n
-		end
-	end
-		
 	------------------------------------------------------------------------------
 	-- Count Stored Items
 	------------------------------------------------------------------------------
@@ -85,7 +75,7 @@ function lib_vst.new(storeAs)
 		if removeIndex <= threshold then
 			if removeIndex > 1 then table_sort(remove) end
 			local offset = 0
-			
+
 			for i = 1, #remove do
 				local r = remove[i]
 
@@ -93,11 +83,16 @@ function lib_vst.new(storeAs)
 				table_remove(markedIndices, r - offset)
 
 				if i < removeIndex then
-					editIndices((r - offset), remove[i + 1] - offset - 1, -(offset + 1), offset, r)
+					local incr = -(offset + 1)
+					for p = r - offset, remove[i + 1] - offset - 1 do
+						stored[p]._cbe_reserved[storeAs] = stored[p]._cbe_reserved[storeAs] + incr
+					end
 				else
-					editIndices((r - offset), false, -offset - 1, offset)
+					local incr = -offset - 1
+					for p = r - offset, #stored do
+						stored[p]._cbe_reserved[storeAs] = stored[p]._cbe_reserved[storeAs] + incr
+					end
 				end
-
 				offset = offset + 1
 			end
 		else
@@ -105,7 +100,7 @@ function lib_vst.new(storeAs)
 			for i = 1, removeIndex do
 				stored[remove[i] ] = nil
 			end
-	
+
 			local newStored = {}
 			for i = 1, numStored do
 				if stored[i] ~= nil then
@@ -113,11 +108,11 @@ function lib_vst.new(storeAs)
 					newStored[#newStored]._cbe_reserved[storeAs] = #newStored
 				end
 			end
-		
+
 			stored = newStored
 		end
-			
-		markedIndices = {}		
+
+		markedIndices = {}
 		removeIndex = 0
 		remove = {}
 	end
@@ -137,11 +132,6 @@ function lib_vst.new(storeAs)
 			end
 		end
 	end
-
-	------------------------------------------------------------------------------
-	-- Set Metatable for Convenience
-	------------------------------------------------------------------------------
-	setmetatable(vst, {__call = vst.items})
 
 	return vst
 end

@@ -2,7 +2,7 @@
 --[[
 CBEffects Component: Screen
 
-Gives correct screen dimensions, as well as scaling methods.
+Gives correct screen dimensions.
 --]]
 --------------------------------------------------------------------------------
 

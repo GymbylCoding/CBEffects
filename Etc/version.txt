@@ -2,17 +2,41 @@
 CBEffects Version Info
 --------------------------------------------------------------------------------
 
+Current Version:
+--------------------------------------------------------------------------------
+Version Name: 3.1
+Released: June 2014
+Description: A maintenance update to freshen things up.
+
+Changes:
+--------
+
+Resources:
+	Added samples to the SampleCache
+	Removed reference.cy
+
+Library:
+	Core
+	--------------------
+	Various speed improvements
+	Minor enhancements
+
+
+Current Main Version:
+--------------------------------------------------------------------------------
+
 Version Name: 3.0
 Released: January 2014
 Description: To upgrade for the Corona graphics library upgrade, a new release of CBEffects has been written and turned CBEffects back into the "one particle system to rule them all". With a completely rewritten core engine, new capabilities, numerous small enhancements, and a new internal multi-file format, CBEffects 3.0 is the most advanced version yet of the most advanced Corona SDK particle system yet.
 
 Changes:
+--------
 
 Resources:
 	Removed OldSamples folder
 	Removed demo app (needs rewriting for 3.0)
 	Added several samples to the SampleCache
-	Rewrote non-relavent CBGadgets
+	Rewrote non-relevent CBGadgets
 
 Library:
 	Core

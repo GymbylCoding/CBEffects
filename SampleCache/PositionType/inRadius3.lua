@@ -1,6 +1,6 @@
 --------------------------------------------------------------------------------
 --[[
-inRadius3
+InRadius3
 
 Elliptical positioning of particles with inner X and Y radii.
 --]]
@@ -13,8 +13,8 @@ local vent = CBE.newVent {
 	positionType = "inRadius",
 	xRadius = 400, -- Make an elliptical shape
 	yRadius = 200,
-	innerYRadius = 200, -- "Carve out" another ellipse where particles won't get positioned
-	innerXRadius = 120,
+	innerXRadius = 120, -- "Carve out" another ellipse where particles won't get positioned
+	innerYRadius = 200,
 	physics = {
 		velocity = 0
 	}

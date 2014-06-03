@@ -8,7 +8,7 @@ www.github.com/GymbylCoding
 www.gymbyl.com
 gymbylcoding.github.io
 
-Version: 3.0
+Version: 3.1
 
 Contents of this folder:
 	Library itself (Library.lua, cbe_core/*)

@@ -16,40 +16,17 @@ local table_insert = table.insert
 local table_concat = table.concat
 
 local codes = {}
-local codeLength = 6
-
-local characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890"
-local special = "`~!@#$%^&*_=/*-+.,;:\"\'<>{}[]()"
-local numCharacters = characters:len()
-local numSpecial = special:len()
+local codeMax = 50000 -- Max number for randomly generated code numbers
 
 --------------------------------------------------------------------------------
 -- Create a Unique Code
 --------------------------------------------------------------------------------
 function lib_uniquecode.new(groupName)
 	if not codes[groupName] then codes[groupName] = {} end
-	
-	local code = ""
-	local codeTable = {}
-	
-	for i = 1, codeLength do
-		local characterIndex = math_random(numCharacters)
-		codeTable[i] = characters:sub(characterIndex, characterIndex)
-	end
-	local characterIndex = math_random(numSpecial)
-	codeTable[codeLength + 1] = special:sub(characterIndex, characterIndex)
-	code = table_concat(codeTable)
-	
-	while codes[groupName][code] do
-		for i = 1, codeLength do
-			local characterIndex = math_random(numCharacters)
-			codeTable[i] = characters:sub(characterIndex, characterIndex)
-		end
-		local characterIndex = math_random(numSpecial)
-		codeTable[codeLength + 1] = special:sub(characterIndex, characterIndex)
-		code = table_concat(codeTable)
-	end
-	
+
+	local code = math_random(codeMax)
+	while codes[groupName][code] do code = math_random(codeMax) end
+
 	codes[groupName][code] = true
 	return code
 end

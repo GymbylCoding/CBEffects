@@ -38,8 +38,6 @@ local either = lib_functions.either
 local getPointInRadius = lib_functions.getPointInRadius
 local getPointsAlongLine = lib_functions.getPointsAlongLine
 
-local s = lib_functions.getPointInRadius
-
 local removeParticlesNum = 6 -- How many updates should take place before we clear deleted particles from memory
 
 --------------------------------------------------------------------------------
@@ -78,7 +76,7 @@ function vent_core.new(params)
 
 			p._numUpdates = 0
 			p._lifePhase = "in"
-			
+
 			p._cbe_reserved = {
 				xDamping = vent.xDamping, --getValue(vent.xDamping, vent, p),
 				yDamping = vent.yDamping, --getValue(vent.yDamping, vent, p),
@@ -200,7 +198,7 @@ function vent_core.new(params)
 			elseif colorType == "function" then
 				color = {vent.color()}
 			end
-			
+
 			local redValue = color[1] or 0
 			p._cbe_reserved.r, p._cbe_reserved.g, p._cbe_reserved.b, p._cbe_reserved.a = redValue, color[2] or redValue, color[3] or redValue, color[4] or 1
 			p._cbe_reserved.setFillColor(p, p._cbe_reserved.r, p._cbe_reserved.g, p._cbe_reserved.b, p._cbe_reserved.a)
@@ -261,8 +259,8 @@ function vent_core.new(params)
 				onComplete = function()
 					p._lifePhase = "life"
 					p._cbe_reserved.transition = transition_to(p, {
-						alpha = vent.endAlpha,
-						delay = vent.lifeTime,
+						alpha = p.endAlpha,
+						delay = vent.lifeTime, --getValue(vent.lifeTime, vent, p)
 						time = vent.outTime, --getValue(vent.outTime, vent, p),
 						transition = vent.outTransition,
 						tag = iterStage.id,
@@ -284,17 +282,6 @@ function vent_core.new(params)
 	------------------------------------------------------------------------------
 	-- Vent Methods
 	------------------------------------------------------------------------------
-	function vent._cbe_reserved.updateParticles()
-		alternator = (alternator + 1) % removeParticlesNum
-		if alternator ~= -1 then
-			particles.removeMarked()
-		end
-
-		for p in particles.items() do
-			iterStage.updateParticle(p)
-		end
-	end
-
 	function vent.resetAngles() if vent.autoAngle then for w = 1, #vent.angles do for a = vent.angles[w][1], vent.angles[w][2] do if vent.preCalculateAngles then table_insert(vent.calculatedAngles, forcesByAngle(vent.velocity, a)) else table_insert(vent.calculatedAngles, a) end end end else if vent.preCalculateAngles then for a = 1, #vent.angles do table_insert(vent.calculatedAngles, forcesByAngle(vent.velocity, vent.angles[a])) end else for a = 1, #vent.angles do table_insert(vent.calculatedAngles, vent.angles[a]) end end end end
 	function vent.resetPoints() vent.calculatedLinePoints = getPointsAlongLine(vent.point1[1] or vent.point1.x, vent.point1[2] or vent.point1.y, vent.point2[1] or vent.point2.x, vent.point2[2] or vent.point2.y, vent.lineDensity) end
 	function vent.setGravity(x, y) iterStage.xGravity, iterStage.yGravity = x, y end
@@ -304,25 +291,23 @@ function vent_core.new(params)
 	function vent.setProductUpdate(k, v) if iterStage.productUpdate[k] ~= nil then iterStage.productUpdate[k] = v end end
 	function vent.setMovementScale(x, y) iterStage.xScale = x iterStage.yScale = y or x end
 	function vent.setScale(x, y) vent.scaleX = x vent.scaleY = y or x end
-	function vent.clean()
-		transition_cancel(iterStage.id)
-		for p, i in particles() do
-			if p then
-				vent.onDeath(p, vent)
-				display_remove(p)
-				particles.markForRemoval(p._cbe_reserved.particleIndex)
-				p._cbe_reserved.killed = true
-				p = nil
-			end
-		end
-		particles.removeMarked()
-	end
+	function vent.clean() transition_cancel(iterStage.id) for p, i in particles() do if p then vent.onDeath(p, vent) display_remove(p) particles.markForRemoval(p._cbe_reserved.particleIndex) p._cbe_reserved.killed = true p = nil end end particles.removeMarked() end
 
 	vent.particles = particles.items
 	vent.countParticles = particles.count
 	vent.linkField = iterStage.linkField
 	vent.unlinkField = iterStage.unlinkField
 	vent.unlinkAllFields = iterStage.unlinkAllFields
+
+	function vent._cbe_reserved.updateParticles()
+		alternator = (alternator + 1) % removeParticlesNum
+		if alternator == 0 then
+			particles.removeMarked()
+		end
+		for p in particles.items() do
+			iterStage.updateParticle(p)
+		end
+	end
 
 	------------------------------------------------------------------------------
 	-- Destroy Vent

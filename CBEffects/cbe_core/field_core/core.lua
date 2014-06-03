@@ -43,16 +43,13 @@ function field_core.new(params)
 		if field.type == "rect" then
 			-- Run a simple rectangle test
 			if (p.x >= field.x and p.x <= field.x + field.width) and (p.y >= field.y and p.y <= field.y + field.height) then collided = true end
-		
 		elseif field.type == "circle" then
 			-- Calculate the distance and compare it with the radius
 			local dist = (((p.x - field.x) ^ 2) + ((p.y - field.y) ^ 2)) ^ 0.5
 			if dist <= field.radius then collided = true end
-		
 		elseif field.type == "polygon" then
 			-- Collision check with polygon
 			if pointInPolygon(field.points, p) then collided = true end
-
 		end
 
 		if field.singleEffect and collided then
