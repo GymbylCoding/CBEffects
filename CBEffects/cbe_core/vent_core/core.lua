@@ -291,7 +291,7 @@ function vent_core.new(params)
 	function vent.setProductUpdate(k, v) if iterStage.productUpdate[k] ~= nil then iterStage.productUpdate[k] = v end end
 	function vent.setMovementScale(x, y) iterStage.xScale = x iterStage.yScale = y or x end
 	function vent.setScale(x, y) vent.scaleX = x vent.scaleY = y or x end
-	function vent.clean() transition_cancel(iterStage.id) for p, i in particles() do if p then vent.onDeath(p, vent) display_remove(p) particles.markForRemoval(p._cbe_reserved.particleIndex) p._cbe_reserved.killed = true p = nil end end particles.removeMarked() end
+	function vent.clean() transition_cancel(iterStage.id) for p, i in particles.items() do if p then particles.markForRemoval(p._cbe_reserved.particleIndex) p._cbe_reserved.killed = true p._kill() p = nil end end particles.removeMarked() end
 
 	vent.particles = particles.items
 	vent.countParticles = particles.count
