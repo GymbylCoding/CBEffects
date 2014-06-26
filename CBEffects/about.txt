@@ -15,6 +15,15 @@ Contents of this folder:
 	about.txt
 	Basic texture set used for samples (textures/*)
 
+--------------------------------------------------------------------------------
+Using Legacy Graphics
+--------------------------------------------------------------------------------
+CBEffects is now backwards-compatible with Corona's older graphics version. To activate legacy mode, do the following:
+
+1. Set "useLegacyGraphics" on line #14 of CBEffects/cbe_core/misc/presets.lua to true
+2. Change the 1 at the end of line #203 of CBEffects/cbe_core/vent_core/core.lua to 255
+
+Everything should work for the older graphics version now.
 
 --------------------------------------------------------------------------------
 Get Sold on CBEffects

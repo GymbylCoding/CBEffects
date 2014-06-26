@@ -1,21 +1,12 @@
 --------------------------------------------------------------------------------
 --[[
-CBEffects Component: Presets
+CBEffects Component: Presets (Legacy Graphics version)
 
-All the vent and field presets.
+All the vent and field presets, modified to support Corona's old graphics module.
 --]]
 --------------------------------------------------------------------------------
 
 local presets = {}
-
---------------------------------------------------------------------------------
--- Graphics Compatibility Mode
---------------------------------------------------------------------------------
-local useLegacyGraphics = false -- Set to true if you're using legacy graphics
-
-if useLegacyGraphics then
-	return require("CBEffects.cbe_core.misc.presets_legacygraphics")
-end
 
 --------------------------------------------------------------------------------
 -- Localize and Require
@@ -30,7 +21,7 @@ local display_newCircle = display.newCircle
 local display_newImageRect = display.newImageRect
 local angleBetween = lib_functions.angleBetween
 
-local burnColors = {{1, 0, 0}, {1, 1, 0}, {1, 1, 0}, {1, 1, 0}}
+local burnColors = {{255, 0, 0}, {255, 255, 0}, {255, 255, 0}, {255, 255, 0}}
 
 --------------------------------------------------------------------------------
 -- List of Supported Presets
@@ -44,7 +35,7 @@ presets.supported = {
 -- Vent Presets
 --------------------------------------------------------------------------------
 presets.vents = {
-	-- Default preset - no contents because the parameters for it are used as hard-coded defaults
+	-- Default preset - no contents because the parameters for it are used as defaults
 	default = {physics = {}},
 
 	------------------------------------------------------------------------------
@@ -57,14 +48,14 @@ presets.vents = {
 		point1 = {screen.width * 0.166666667, screen.centerY + (screen.height * 0.166666667)},
 		point2 = {screen.width - (screen.width * 0.166666667), screen.centerY + (screen.height * 0.166666667)},
 		build = function() return display_newImageRect("CBEffects/textures/glow.png", math_random(80, 150), math_random(160, 550)) end,
-		color = {{0, 1, 0}, {0.588, 1, 0.588}},
+		color = {{0, 255, 0}, {150, 255, 150}},
 		cycleColor = true,
 		perEmit = 1,
 		inTime = 500,
 		outTime = 1500,
 		lifeAlpha = 0.2,
 		startAlpha = 0,
-		onCreation = function(p) p.anchorY = 1 end,
+		onCreation = function(p) p:translate(0, -p.height * 0.5) end,
 		propertyTable = {blendMode = "add"},
 		physics = {
 			velocity = 1,
@@ -81,14 +72,14 @@ presets.vents = {
 		title = "beams",
 		positionType = "inRadius",
 		build = function() return display_newRect(0, 0, math_random(800), 20) end,
-		color = {{1, 0, 0}, {0, 0, 1}},
+		color = {{255, 0, 0}, {0, 0, 255}},
 		cycleColor = true,
 		perEmit = 1,
 		inTime = 300,
 		outTime = 2000,
 		lifeAlpha = 0.3,
 		startAlpha = 0,
-		onCreation = function(p, v) p.anchorX = 0 p.rotation = angleBetween(p.x, p.y, v.x, v.y, 90) end,
+		onCreation = function(p, v) local x, y = p.x, p.y p:setReferencePoint(display.CenterLeftReferencePoint) p.rotation = angleBetween(x, y, v.x, v.y, 90) p.x, p.y = x, y end,
 		physics = {
 			velocity = 0,
 			angularVelocity = 0.04,
@@ -102,13 +93,13 @@ presets.vents = {
 		title = "burn",
 		positionType = "atPoint",
 		build = function() local size = math_random(50, 150) return display_newImageRect("CBEffects/textures/glow.png", size, size) end,
-		color = {{0, 0, 1}},
+		color = {{0, 0, 255}},
 		emitDelay = 30,
 		perEmit = 3,
 		inTime = 500,
 		outTime = 500,
 		startAlpha = 0,
-		onCreation = function(p) p.changeColor(burnColors[math_random(2)], 200) end,
+		onCreation = function(p) p.changeColor(burnColors[math_random(4)], 200) end,
 		propertyTable = {blendMode = "add"},
 		physics = {
 			angles = {{80, 100}},
@@ -128,7 +119,7 @@ presets.vents = {
 		point1 = {100, screen.height - 100},
 		point2 = {screen.width - 100, screen.height - 100},
 		build = function() return display_newCircle(0, 0, math_random(5, 30)) end,
-		color = {{0, 0, 1}, {0.471, 0.471, 1}, {0, 0, 1}, {0.471, 0.471, 1}, {0, 0, 1}, {0.471, 0.471, 1}, {1, 0, 0}},
+		color = {{0, 0, 255}, {120, 120, 255}, {0, 0, 255}, {120, 120, 255}, {0, 0, 255}, {120, 120, 255}, {255, 0, 0}},
 		emitDelay = 100,
 		perEmit = 4,
 		inTime = 300,
@@ -152,7 +143,7 @@ presets.vents = {
 		point1 = {0, -10},
 		point2 = {screen.width, -10},
 		build = function() return display_newRect(0, 0, math_random(10, 15), math_random(10, 15)) end,
-		color = {{1, 0, 0}, {0, 0, 1}, {1, 1, 0}, {0, 1, 0}},
+		color = {{255, 0, 0}, {0, 0, 255}, {255, 255, 0}, {0, 255, 0}},
 		emitDelay = 100,
 		perEmit = 2,
 		inTime = 100,
@@ -177,7 +168,7 @@ presets.vents = {
 		point1 = {100, screen.height},
 		point2 = {screen.width - 100, screen.height},
 		build = function() local size = math_random(10, 20) return display_newImageRect("CBEffects/textures/glow.png", size, size) end,
-		color = {{1, 1, 0}, {1, 1, 0}, {1, 1, 0}, {1, 1, 0}, {1, 0, 0}},
+		color = {{255, 255, 0}, {255, 255, 0}, {255, 255, 0}, {255, 255, 0}, {255, 0, 0}},
 		emitDelay = 100,
 		perEmit = 2,
 		inTime = 300,
@@ -199,7 +190,7 @@ presets.vents = {
 		title = "evil",
 		positionType = "atPoint",
 		build = function() local size = math_random(80, 120) return display_newImageRect("CBEffects/textures/glow.png", size, size) end,
-		color = {{0.392, 0, 0.392}, {0, 0, 0.706}, {0.314, 0, 0.235}},
+		color = {{100, 0, 100}, {0, 0, 180}, {80, 0, 60}},
 		emitDelay = 10,
 		perEmit = 1,
 		inTime = 1500,
@@ -225,7 +216,7 @@ presets.vents = {
 		point1 = {300, screen.height + 100},
 		point2 = {screen.width - 300, screen.height + 100},
 		build = function() local size = math_random(100, 300) return display_newImageRect("CBEffects/textures/cloud.png", size, size) end,
-		color = {{1, 1, 0}, {1, 1, 0}, {1, 1, 0}, {1, 1, 0}, {0.784, 0.784, 0}, {0.784, 0.784, 0}, {1, 0.392, 0}},
+		color = {{255, 255, 0}, {255, 255, 0}, {255, 255, 0}, {255, 255, 0}, {200, 200, 0}, {200, 200, 0}, {255, 100, 0}},
 		emitDelay = 100,
 		perEmit = 2,
 		inTime = 300,
@@ -254,7 +245,7 @@ presets.vents = {
 		rectLeft = screen.centerX * 0.5, rectTop = screen.centerY * 0.5,
 		rectWidth = screen.centerX, rectHeight = screen.centerY,
 		build = function() local size = math_random(100, 400) return display_newImageRect("CBEffects/textures/glow.png", size, size) end,
-		color = {{1, 0, 1}, {1, 0, 0}, {1, 0, 0}, {0, 0, 1}},
+		color = {{255, 0, 255}, {255, 0, 0}, {255, 0, 0}, {0, 0, 255}},
 		emitDelay = 30,
 		perEmit = 1,
 		inTime = 1500,
@@ -276,7 +267,7 @@ presets.vents = {
 		positionType = "atPoint",
 		x = screen.centerX, y = screen.height * 0.75,
 		build = function() local size = math_random(50, 80) return display_newImageRect("CBEffects/textures/glow.png", size, size) end,
-		color = {{0, 0.855, 1}},
+		color = {{0, 220, 255}},
 		inTime = 500,
 		lifeTime = 0,
 		outTime = 500,
@@ -299,14 +290,14 @@ presets.vents = {
 		positionType = "atPoint",
 		x = screen.centerX, y = screen.centerY,
 		build = function() return display_newImageRect("CBEffects/textures/glow.png", 10, 5) end,
-		color = {{1}},
+		color = {{255, 255, 255}},
 		emitDelay = 100,
 		perEmit = 9,
 		inTime = 500,
 		lifeTime = 0,
 		outTime = 1200,
 		startAlpha = 0,
-		onCreation = function(p) p.anchorX = 0 end,
+		onCreation = function(p) p:setReferencePoint(display.CenterLeftReferencePoint) end,
 		onUpdate = function(p) if p._numUpdates > 3 then p._cbe_reserved.rotateTowardVel = false end end,
 		propertyTable = {blendMode = "screen"},
 		rotateTowardVel = true,
@@ -327,7 +318,7 @@ presets.vents = {
 		positionType = "atPoint",
 		x = 0, y = screen.centerY,
 		build = function() return display_newImageRect("CBEffects/textures/glow.png", 150, 10) end,
-		color = {{1, 1, 0}},
+		color = {{255, 255, 0}},
 		emitDelay = 100,
 		perEmit = 1,
 		inTime = 120,
@@ -352,7 +343,7 @@ presets.vents = {
 		point1 = {0, screen.top - 10},
 		point2 = {screen.width * 1.14, screen.top - 10},
 		build = function() return display_newRect(0, 0, math_random(2,4), math_random(6,25)) end,
-		color = {{1}, {0.9, 0.9, 1}},
+		color = {{255, 255, 255}, {230, 230, 255}},
 		perEmit = 1,
 		outTime = 2000,
 		startAlpha = 0,
@@ -372,7 +363,7 @@ presets.vents = {
 		point1 = {200, screen.height - 100},
 		point2 = {screen.width - 200, screen.height - 100},
 		build = function() local size = math_random(200, 300) return display_newImageRect("CBEffects/textures/cloud.png", size, size) end,
-		color = {{0.54}, {0.47}, {0.39}, {0.31}},
+		color = {{140, 140, 140}, {120, 120, 120}, {100, 100, 100}, {80, 80, 80}},
 		emitDelay = 100,
 		perEmit = 3,
 		inTime = 700,
@@ -399,7 +390,7 @@ presets.vents = {
 		point1 = {0, screen.top - 10},
 		point2 = {screen.width, screen.top - 10},
 		build = function() local size = math_random(10, 40) return display_newImageRect("CBEffects/textures/glow.png", size, size) end,
-		color = {{1}, {0.9, 0.9, 1}},
+		color = {{255, 255, 255}, {230, 230, 255}},
 		perEmit = 1,
 		inTime = 300,
 		outTime = 2000,
@@ -419,7 +410,7 @@ presets.vents = {
 		positionType = "inRadius",
 		x = screen.centerX, y = screen.centerY,
 		build = function() local size = math_random(10, 20) return display_newImageRect("CBEffects/textures/glow.png", size, size) end,
-		color = {{1}, {0.9, 0.9, 1}},
+		color = {{255, 255, 255}, {230, 230, 255}},
 		emitDelay = 1000,
 		perEmit = 6,
 		inTime = 300,
@@ -440,7 +431,7 @@ presets.vents = {
 		positionType = "inRadius",
 		x = screen.centerX, y = screen.height,
 		build = function() local size = math_random(50, 100) return display_newImageRect("CBEffects/textures/cloud.png", size, size) end,
-		color = {{1}, {0.9}, {0.78}},
+		color = {{255, 255, 255}, {230, 230, 230}, {200, 200, 200}},
 		emitDelay = 50,
 		perEmit = 10,
 		inTime = 200,
@@ -467,7 +458,7 @@ presets.vents = {
 		rectWidth = screen.width,
 		rectHeight = screen.height - (screen.height * 0.333333333),
 		build = function() return display_newImageRect("CBEffects/textures/glow.png", 160, 20) end,
-		color = {{1}, {0.8, 0.8, 0.8}},
+		color = {{255, 255, 255}, {204, 204, 204}},
 		inTime = 500,
 		outTime = 500,
 		startAlpha = 0,
@@ -501,7 +492,7 @@ presets.vents = {
 		positionType = "inRadius",
 		x = screen.left, y = 100,
 		build = function() local size = math_random(50, 100) return display_newImageRect("CBEffects/textures/cloud.png", size, size) end,
-		color = {{1}, {0.8, 0.8, 1}, {0.9, 0.9, 1}},
+		color = {{255, 255, 255}, {204, 204, 255}, {230, 230, 255}},
 		emitDelay = 50,
 		perEmit = 3,
 		inTime = 500,
@@ -546,7 +537,7 @@ presets.fields = {
 		title = "colorchange",
 		singleEffect = true,
 		onCollision = function(p, f)
-			p.changeColor({0,  0,  1},  500,  0)
+			p.changeColor({0,  0,  255},  500,  0)
 		end
 	},
 
