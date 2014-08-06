@@ -16,11 +16,19 @@ local t = display.newText({
 	fontSize = 30
 })
 
-t.x, t.y = 0, display.screenOriginY
 t.x,t.y = display.contentCenterX, t.height * 0.5 + 10
 
 local vent = CBE.newVent({
-	preset = "burn"
+	positionType = "inRadius",
+	radius = 500,
+	innerRadius = 400,
+	onCreation = function(particle, vent)
+		particle:setVelocity((vent.x - particle.x) * 0.01, (vent.y - particle.y) * 0.01)
+	end,
+	physics = {
+		gravityY = 0,
+		velocity = 0
+	}
 })
 
 vent:start()

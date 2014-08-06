@@ -314,6 +314,7 @@ function vent_core.new(params)
 	------------------------------------------------------------------------------
 	-- This version will only be called by the vent's parent VentGroup
 	function vent._cbe_reserved.destroy()
+		particles.removeMarked() -- Make sure there isn't any "garbage" in the particle structure
 		vent.stop()
 		vent.clean()
 		iterStage.unlinkAllFields()
