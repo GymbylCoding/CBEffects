@@ -42,13 +42,13 @@ function core.newVentGroup(params)
 	local master = {}
 	local vents = lib_vst.new("ventGroupIndex")
 	local titleReference = {}
-	
+
 	master._cbe_reserved = {}
 
 	------------------------------------------------------------------------------
 	-- Internal Commands
 	------------------------------------------------------------------------------
-	function master._cbe_reserved.resetTitleReference() for vent in vents() do titleReference[vent.title] = vent._cbe_reserved.vstStoredIndex end end
+	function master._cbe_reserved.resetTitleReference() for vent in vents.items() do titleReference[vent.title] = vent._cbe_reserved.vstStoredIndex end end
 	function master._cbe_reserved.registerDestroy(vent) vents.removeByIndex(vent._cbe_reserved.ventGroupIndex) end
 
 	------------------------------------------------------------------------------
@@ -66,18 +66,18 @@ function core.newVentGroup(params)
 	-- Start All
 	------------------------------------------------------------------------------
 	function master.startMaster()
-		for vent in vents() do
+		for vent in vents.items() do
 			if vent.isActive then
 				vent.start()
 			end
 		end
 	end
-	
+
 	------------------------------------------------------------------------------
 	-- Stop All
 	------------------------------------------------------------------------------
 	function master.stopMaster()
-		for vent in vents() do
+		for vent in vents.items() do
 			vent.stop()
 		end
 	end
@@ -86,7 +86,7 @@ function core.newVentGroup(params)
 	-- Emit from All
 	------------------------------------------------------------------------------
 	function master.emitMaster()
-		for vent in vents() do
+		for vent in vents.items() do
 			if vent.isActive then
 				vent.emit()
 			end
@@ -97,7 +97,7 @@ function core.newVentGroup(params)
 	-- Destroy VentGroup
 	------------------------------------------------------------------------------
 	function master.destroyMaster()
-		for vent, index in vents() do
+		for vent, index in vents.items() do
 			vent._cbe_reserved.destroy()
 			vents.markForRemoval(index)
 		end
@@ -178,7 +178,7 @@ function core.newVentGroup(params)
 	------------------------------------------------------------------------------
 	function master.destroy(...)
 		local s = (type(arg[1]) == "table" and 2) or 1
-		
+
 		for i = s, #arg do
 			local index = titleReference[arg[i] ]
 			if index then
@@ -189,16 +189,16 @@ function core.newVentGroup(params)
 				print("destroy(): Missing vent \"" .. arg[i] .. "\".")
 			end
 		end
-		
+
 		vents.removeMarked()
 	end
 
 	------------------------------------------------------------------------------
 	-- List Vents
 	------------------------------------------------------------------------------
-	function master.listVents()
-		print("listVents():")
-		for vent, i in vents() do
+	function master.listvents.items()
+		print("listvents.items():")
+		for vent, i in vents.items() do
 			print("-> " .. vent.title)
 		end
 	end
@@ -225,13 +225,13 @@ function core.newFieldGroup(params)
 	local master = {}
 	local fields = lib_vst.new("fieldGroupIndex")
 	local titleReference = {}
-	
+
 	master._cbe_reserved = {}
 
 	------------------------------------------------------------------------------
 	-- Internal Commands
 	------------------------------------------------------------------------------
-	function master._cbe_reserved.resetTitleReference() for field in fields() do titleReference[field.title] = field._cbe_reserved.vstStoredIndex end end
+	function master._cbe_reserved.resetTitleReference() for field in fields.items() do titleReference[field.title] = field._cbe_reserved.vstStoredIndex end end
 	function master._cbe_reserved.registerDestroy(field) fields.removeByIndex(field._cbe_reserved.fieldGroupIndex) end
 
 	------------------------------------------------------------------------------
@@ -249,18 +249,18 @@ function core.newFieldGroup(params)
 	-- Start All
 	------------------------------------------------------------------------------
 	function master.startMaster()
-		for field in fields() do
+		for field in fields.items() do
 			if field.isActive then
 				field.start()
 			end
 		end
 	end
-	
+
 	------------------------------------------------------------------------------
 	-- Stop All
 	------------------------------------------------------------------------------
 	function master.stopMaster()
-		for field in fields() do
+		for field in fields.items() do
 			field.stop()
 		end
 	end
@@ -269,7 +269,7 @@ function core.newFieldGroup(params)
 	-- Emit from All
 	------------------------------------------------------------------------------
 	function master.emitMaster()
-		for field in fields() do
+		for field in fields.items() do
 			if field.isActive then
 				field.emit()
 			end
@@ -280,7 +280,7 @@ function core.newFieldGroup(params)
 	-- Destroy Master
 	------------------------------------------------------------------------------
 	function master.destroyMaster()
-		for field in fields() do
+		for field in fields.items() do
 			fields.markForRemoval(field._cbe_reserved.fieldGroupIndex)
 		end
 		fields.removeMarked()
@@ -348,7 +348,7 @@ function core.newFieldGroup(params)
 	------------------------------------------------------------------------------
 	function master.destroy(...)
 		local s = (type(arg[1]) == "table" and 2) or 1
-		
+
 		for i = s, #arg do
 			local index = titleReference[arg[i] ]
 			if index then
@@ -358,16 +358,16 @@ function core.newFieldGroup(params)
 				print("destroy(): Missing field \"" .. arg[i] .. "\".")
 			end
 		end
-		
+
 		fields.removeMarked()
 	end
 
 	------------------------------------------------------------------------------
 	-- List Fields
 	------------------------------------------------------------------------------
-	function master.listFields()
-		print("listFields():")
-		for field, i in fields() do
+	function master.listfields.items()
+		print("listfields.items():")
+		for field, i in fields.items() do
 			print("-> " .. field.title)
 		end
 	end
@@ -393,7 +393,7 @@ function core.listPresets()
 
 	table_insert(tbl, "\n")
 	table_insert(tbl, "\nVent Presets\n--------------------\n")
-	
+
 	for k, v in pairs(lib_presets.vents) do
 		table_insert(tbl, k)
 		table_insert(tbl, "\n")
