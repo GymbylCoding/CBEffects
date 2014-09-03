@@ -196,8 +196,8 @@ function core.newVentGroup(params)
 	------------------------------------------------------------------------------
 	-- List Vents
 	------------------------------------------------------------------------------
-	function master.listvents.items()
-		print("listvents.items():")
+	function master.listVents()
+		print("listVents():")
 		for vent, i in vents.items() do
 			print("-> " .. vent.title)
 		end
@@ -365,8 +365,8 @@ function core.newFieldGroup(params)
 	------------------------------------------------------------------------------
 	-- List Fields
 	------------------------------------------------------------------------------
-	function master.listfields.items()
-		print("listfields.items():")
+	function master.listFields()
+		print("listFields()():")
 		for field, i in fields.items() do
 			print("-> " .. field.title)
 		end
