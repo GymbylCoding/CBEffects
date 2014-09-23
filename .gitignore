@@ -1,9 +1,3 @@
-# .gitignore
-
-Etc/graphics.txt
-clink.lua
-misc_cache.txt
-cydoc/
-ivory.lua
-reference.cy
-App/
+.DS_Store
+gitignore/
+App

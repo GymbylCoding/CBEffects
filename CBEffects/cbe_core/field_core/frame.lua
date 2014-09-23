@@ -27,7 +27,9 @@ function lib_fieldframe.newFrame(params, preset)
 	local preset = preset
 
 	local field = {
-		_cbe_reserved = {},
+		_cbe_reserved = {
+			isField = true
+		},
 
 		----------------------------------------------------------------------------
 		-- Parameters

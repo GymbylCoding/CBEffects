@@ -55,7 +55,12 @@ function core.newVentGroup(params)
 	-- Add a Vent
 	------------------------------------------------------------------------------
 	function master.addVent(params)
-		local vent = vent_core.new(params)
+		local vent
+		if params._cbe_reserved and params._cbe_reserved.isVent then
+			vent = params
+		else
+			vent = vent_core.new(params)
+		end
 		vent._cbe_reserved.masterVentGroup = master
 		vents.add(vent)
 		if not master[vent.title] then master[vent.title] = vent.emit end
@@ -112,13 +117,14 @@ function core.newVentGroup(params)
 	-- Start Vents
 	------------------------------------------------------------------------------
 	function master.start(...)
-		local s = (type(arg[1]) == "table" and 2) or 1
-		for i = s, #arg do
-			local index = titleReference[arg[i] ]
+		local args = {...}
+		local s = (type(args[1]) == "table" and 2) or 1
+		for i = s, #args do
+			local index = titleReference[args[i] ]
 			if index then
 				vents.get(index).start()
 			else
-				print("start(): Missing vent \"" .. arg[i] .. "\".")
+				print("start(): Missing vent \"" .. args[i] .. "\".")
 			end
 		end
 	end
@@ -127,13 +133,14 @@ function core.newVentGroup(params)
 	-- Stop Vents
 	------------------------------------------------------------------------------
 	function master.stop(...)
-		local s = (type(arg[1]) == "table" and 2) or 1
-		for i = s, #arg do
-			local index = titleReference[arg[i] ]
+		local args = {...}
+		local s = (type(args[1]) == "table" and 2) or 1
+		for i = s, #args do
+			local index = titleReference[args[i] ]
 			if index then
 				vents.get(index).stop()
 			else
-				print("stop(): Missing vent \"" .. arg[i] .. "\".")
+				print("stop(): Missing vent \"" .. args[i] .. "\".")
 			end
 		end
 	end
@@ -142,13 +149,14 @@ function core.newVentGroup(params)
 	-- Emit from Vents
 	------------------------------------------------------------------------------
 	function master.emit(...)
-		local s = (type(arg[1]) == "table" and 2) or 1
-		for i = s, #arg do
-			local index = titleReference[arg[i] ]
+		local args = {...}
+		local s = (type(args[1]) == "table" and 2) or 1
+		for i = s, #args do
+			local index = titleReference[args[i] ]
 			if index then
 				vents.get(index).emit()
 			else
-				print("emit(): Missing vent \"" .. arg[i] .. "\".")
+				print("emit(): Missing vent \"" .. args[i] .. "\".")
 			end
 		end
 	end
@@ -157,15 +165,16 @@ function core.newVentGroup(params)
 	-- Get Vents
 	------------------------------------------------------------------------------
 	function master.get(...)
+		local args = {...}
 		local getTable = {}
 
-		local s = (type(arg[1]) == "table" and 2) or 1
-		for i = s, #arg do
-			local index = titleReference[arg[i] ]
+		local s = (type(args[1]) == "table" and 2) or 1
+		for i = s, #args do
+			local index = titleReference[args[i] ]
 			if index then
 				table_insert(getTable, vents.get(index))
 			else
-				print("get(): Missing vent \"" .. arg[i] .. "\".")
+				print("get(): Missing vent \"" .. args[i] .. "\".")
 			end
 		end
 
@@ -177,16 +186,17 @@ function core.newVentGroup(params)
 	-- Destroy Vents
 	------------------------------------------------------------------------------
 	function master.destroy(...)
-		local s = (type(arg[1]) == "table" and 2) or 1
+		local args = {...}
+		local s = (type(args[1]) == "table" and 2) or 1
 
-		for i = s, #arg do
-			local index = titleReference[arg[i] ]
+		for i = s, #args do
+			local index = titleReference[args[i] ]
 			if index then
 				vents.get(index)._cbe_reserved.destroy()
 				vents.markForRemoval(index)
-				titleReference[arg[i] ] = nil
+				titleReference[args[i] ] = nil
 			else
-				print("destroy(): Missing vent \"" .. arg[i] .. "\".")
+				print("destroy(): Missing vent \"" .. args[i] .. "\".")
 			end
 		end
 
@@ -238,7 +248,12 @@ function core.newFieldGroup(params)
 	-- Add a Field
 	------------------------------------------------------------------------------
 	function master.addField(params)
-		local field = field_core.new(params)
+		local field
+		if params._cbe_reserved and params._cbe_reserved.isField then
+			field = params
+		else
+			field = field_core.new(params)
+		end
 		field._cbe_reserved.masterFieldGroup = master
 		fields.add(field)
 		if not master[field.title] then master[field.title] = field.emit end
@@ -266,17 +281,6 @@ function core.newFieldGroup(params)
 	end
 
 	------------------------------------------------------------------------------
-	-- Emit from All
-	------------------------------------------------------------------------------
-	function master.emitMaster()
-		for field in fields.items() do
-			if field.isActive then
-				field.emit()
-			end
-		end
-	end
-
-	------------------------------------------------------------------------------
 	-- Destroy Master
 	------------------------------------------------------------------------------
 	function master.destroyMaster()
@@ -291,13 +295,14 @@ function core.newFieldGroup(params)
 	-- Start Fields
 	------------------------------------------------------------------------------
 	function master.start(...)
-		local s = (type(arg[1]) == "table" and 2) or 1
-		for i = s, #arg do
-			local index = titleReference[arg[i] ]
+		local args = {...}
+		local s = (type(args[1]) == "table" and 2) or 1
+		for i = s, #args do
+			local index = titleReference[args[i] ]
 			if index then
 				fields.get(index).start()
 			else
-				print("start(): Missing field \"" .. arg[i] .. "\".")
+				print("start(): Missing field \"" .. args[i] .. "\".")
 			end
 		end
 	end
@@ -306,13 +311,14 @@ function core.newFieldGroup(params)
 	-- Stop Fields
 	------------------------------------------------------------------------------
 	function master.stop(...)
-		local s = (type(arg[1]) == "table" and 2) or 1
-		for i = s, #arg do
-			local index = titleReference[arg[i] ]
+		local args = {...}
+		local s = (type(args[1]) == "table" and 2) or 1
+		for i = s, #args do
+			local index = titleReference[args[i] ]
 			if index then
 				fields.get(index).stop()
 			else
-				print("stop(): Missing field \"" .. arg[i] .. "\".")
+				print("stop(): Missing field \"" .. args[i] .. "\".")
 			end
 		end
 	end
@@ -321,15 +327,16 @@ function core.newFieldGroup(params)
 	-- Get Fields
 	------------------------------------------------------------------------------
 	function master.get(...)
+		local args = {...}
 		local getTable = {}
 
-		local s = (type(arg[1]) == "table" and 2) or 1
-		for i = s, #arg do
-			local index = titleReference[arg[i] ]
+		local s = (type(args[1]) == "table" and 2) or 1
+		for i = s, #args do
+			local index = titleReference[args[i] ]
 			if index then
 				table_insert(getTable, fields.get(index))
 			else
-				print("get(): Missing field \"" .. arg[i] .. "\".")
+				print("get(): Missing field \"" .. args[i] .. "\".")
 			end
 		end
 
@@ -347,15 +354,16 @@ function core.newFieldGroup(params)
 	-- Destroy Fields
 	------------------------------------------------------------------------------
 	function master.destroy(...)
-		local s = (type(arg[1]) == "table" and 2) or 1
+		local args = {...}
+		local s = (type(args[1]) == "table" and 2) or 1
 
-		for i = s, #arg do
-			local index = titleReference[arg[i] ]
+		for i = s, #args do
+			local index = titleReference[args[i] ]
 			if index then
 				fields.markForRemoval(index)
-				titleReference[arg[i] ] = nil
+				titleReference[args[i] ] = nil
 			else
-				print("destroy(): Missing field \"" .. arg[i] .. "\".")
+				print("destroy(): Missing field \"" .. args[i] .. "\".")
 			end
 		end
 
@@ -366,7 +374,7 @@ function core.newFieldGroup(params)
 	-- List Fields
 	------------------------------------------------------------------------------
 	function master.listFields()
-		print("listFields()():")
+		print("listFields():")
 		for field, i in fields.items() do
 			print("-> " .. field.title)
 		end

@@ -1,6 +1,6 @@
 --------------------------------------------------------------------------------
 --[[
-CBGadget: Retroizer
+Gadget: Retroizer
 
 Collects a vent data table and converts it into 8-bit retro style.
 

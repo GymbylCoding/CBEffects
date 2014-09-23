@@ -113,7 +113,7 @@ function vent_core.new(params)
 
 			p:scale(vent.scaleX, vent.scaleY)
 
-			for k, v in pairs(vent.propertyTable) do p[k] = v end
+			for k, v in pairs(vent.particleProperties) do p[k] = v end
 
 			--------------------------------------------------------------------------
 			-- Particle Functions
@@ -137,6 +137,10 @@ function vent_core.new(params)
 				p._cbe_reserved.r, p._cbe_reserved.b, p._cbe_reserved.g, p._cbe_reserved.a = r, g, b, a
 				return p._cbe_reserved.setFillColor(p, r, g, b, a)
 			end
+			-- Set a property
+			function p:setCBEProperty(pKey, pValue) p._cbe_reserved[pKey] = pValue end
+			-- Get a property
+			function p:getCBEProperty(pKey) return p._cbe_reserved[pKey] end
 
 			if vent.onCreationTime == "afterBuild" then vent.onCreation(p, vent, vent.content) onCreationExecuted = true end
 
@@ -204,17 +208,30 @@ function vent_core.new(params)
 			p._cbe_reserved.setFillColor(p, p._cbe_reserved.r, p._cbe_reserved.g, p._cbe_reserved.b, p._cbe_reserved.a)
 
 			-- Change color
-			p.changeColor = function(colorTo, time, delay, effect)
+			function p:changeColor(colorTo, time, delay, effect)
+				local params
+				if colorTo and colorTo.color then
+					if time then print("Warning: Possible deprecated call to particle.changeColor() with dot.") colorTo = time end
+					params = colorTo
+					params.r = colorTo.color[1] or colorTo.color.r
+					params.g = colorTo.color[2] or colorTo.color.g
+					params.b = colorTo.color[3] or colorTo.color.b
+					params.a = colorTo.color[4] or colorTo.color.a
+					params.color = nil
+				else
+					params = {
+						r = colorTo[1] or colorTo.r,
+						g = colorTo[2] or colorTo.g,
+						b = colorTo[3] or colorTo.b,
+						a = colorTo[4] or colorTo.a,
+						time = time,
+						delay = delay,
+						transition = effect
+					}
+				end
+
 				if p._cbe_reserved.colorTransition then transition_cancel(p._cbe_reserved.colorTransition) end
-				p._cbe_reserved.colorTransition = transition_to(p._cbe_reserved, {
-					r = colorTo[1],
-					g = colorTo[2],
-					b = colorTo[3],
-					a = colorTo[4],
-					time = time,
-					delay = delay,
-					transition = effect
-				})
+				p._cbe_reserved.colorTransition = transition_to(p._cbe_reserved, params)
 			end
 
 			if not onCreationExecuted and vent.onCreationTime == "afterColor" then vent.onCreation(p, vent, vent.content) onCreationExecuted = true end
@@ -282,7 +299,7 @@ function vent_core.new(params)
 	------------------------------------------------------------------------------
 	-- Vent Methods
 	------------------------------------------------------------------------------
-	function vent.resetAngles() if vent.autoAngle then for w = 1, #vent.angles do for a = vent.angles[w][1], vent.angles[w][2] do if vent.preCalculateAngles then table_insert(vent.calculatedAngles, forcesByAngle(vent.velocity, a)) else table_insert(vent.calculatedAngles, a) end end end else if vent.preCalculateAngles then for a = 1, #vent.angles do table_insert(vent.calculatedAngles, forcesByAngle(vent.velocity, vent.angles[a])) end else for a = 1, #vent.angles do table_insert(vent.calculatedAngles, vent.angles[a]) end end end end
+	function vent.resetAngles() if vent.autoCalculateAngles then for w = 1, #vent.angles do for a = vent.angles[w][1], vent.angles[w][2] do if vent.preCalculateAngles then table_insert(vent.calculatedAngles, forcesByAngle(vent.velocity, a)) else table_insert(vent.calculatedAngles, a) end end end else if vent.preCalculateAngles then for a = 1, #vent.angles do table_insert(vent.calculatedAngles, forcesByAngle(vent.velocity, vent.angles[a])) end else for a = 1, #vent.angles do table_insert(vent.calculatedAngles, vent.angles[a]) end end end end
 	function vent.resetPoints() vent.calculatedLinePoints = getPointsAlongLine(vent.point1[1] or vent.point1.x, vent.point1[2] or vent.point1.y, vent.point2[1] or vent.point2.x, vent.point2[2] or vent.point2.y, vent.lineDensity) end
 	function vent.setGravity(x, y) iterStage.xGravity, iterStage.yGravity = x, y end
 	function vent.set(t) for k, v in pairs(t) do if k ~= "_cbe_reserved" then vent[k] = v end end end

@@ -56,10 +56,10 @@ presets.vents = {
 		lifeAlpha = 0.2,
 		startAlpha = 0,
 		onCreation = function(p) p:translate(0, -p.height * 0.5) end,
-		propertyTable = {blendMode = "add"},
+		particleProperties = {blendMode = "add"},
 		physics = {
 			velocity = 1,
-			autoAngle = false,
+			autoCalculateAngles = false,
 			angles = {0, 180},
 			scaleRateY = 0.999
 		}
@@ -100,7 +100,7 @@ presets.vents = {
 		outTime = 500,
 		startAlpha = 0,
 		onCreation = function(p) p.changeColor(burnColors[math_random(4)], 200) end,
-		propertyTable = {blendMode = "add"},
+		particleProperties = {blendMode = "add"},
 		physics = {
 			angles = {{80, 100}},
 			scaleRateX = 0.98,
@@ -175,7 +175,7 @@ presets.vents = {
 		lifeTime = 0,
 		outTime = 1000,
 		startAlpha = 0,
-		propertyTable = {blendMode = "add"},
+		particleProperties = {blendMode = "add"},
 		physics = {
 			velocity = 5,
 			angles = {{75, 105}},
@@ -197,7 +197,7 @@ presets.vents = {
 		lifeTime = 0,
 		outTime = 800,
 		startAlpha = 0,
-		propertyTable = {blendMode = "add"},
+		particleProperties = {blendMode = "add"},
 		physics = {
 			velocity = 1.5,
 			angles = {{0, 360}},
@@ -223,7 +223,7 @@ presets.vents = {
 		lifeTime = 500,
 		outTime = 1000,
 		startAlpha = 0,
-		propertyTable = {blendMode = "screen"},
+		particleProperties = {blendMode = "screen"},
 		physics = {
 			xDamping = 0.2,
 			yDamping = 0.2,
@@ -252,7 +252,7 @@ presets.vents = {
 		lifeTime = 0,
 		outTime = 800,
 		startAlpha = 0,
-		propertyTable = {blendMode = "add"},
+		particleProperties = {blendMode = "add"},
 		physics = {
 			velocity = 0.5,
 			angles = {{0, 360}}
@@ -272,7 +272,7 @@ presets.vents = {
 		lifeTime = 0,
 		outTime = 500,
 		startAlpha = 0,
-		propertyTable = {blendMode = "screen"},
+		particleProperties = {blendMode = "screen"},
 		physics = {
 			velocity = 12,
 			angles = {{70, 110}},
@@ -299,7 +299,7 @@ presets.vents = {
 		startAlpha = 0,
 		onCreation = function(p) p:setReferencePoint(display.CenterLeftReferencePoint) end,
 		onUpdate = function(p) if p._numUpdates > 3 then p._cbe_reserved.rotateTowardVel = false end end,
-		propertyTable = {blendMode = "screen"},
+		particleProperties = {blendMode = "screen"},
 		rotateTowardVel = true,
 		physics = {
 			linearDamping = 0.9,
@@ -328,7 +328,7 @@ presets.vents = {
 		endAlpha = 1,
 		physics = {
 			velocity = 30,
-			autoAngle = false,
+			autoCalculateAngles = false,
 			angles = {0}
 		}
 	},
@@ -500,7 +500,7 @@ presets.vents = {
 		startAlpha = 0,
 		physics = {
 			velocity = 3.5,
-			autoAngle = false,
+			autoCalculateAngles = false,
 			gravityY = 0.5,
 			scaleRateX = 1.02,
 			scaleRateY = 1.04,

@@ -1,7 +1,7 @@
 --[[
-CBGadget: MultiParam
+Gadget: MultiParam
 
-A small CBGadget that collects a vent data table and a table of multi-params and melds them into the vent data table. The new function then becomes one that randomly picks from the multi-param table for that key and executes it.
+A small gadget that collects a vent data table and a table of multi-params and melds them into the vent data table. The new function then becomes one that randomly picks from the multi-param table for that key and executes it.
 
 Usage:
 ---------------------
@@ -45,7 +45,7 @@ local either	= function(t) if t and #t>1 then return t[mrand(#t)] elseif t and #
 
 function multiparam.edit(params, params2)
 	assert(params and params2, "Missing 1 or more arguments to 'edit'")
-	
+
 	for k, v in pairs(params2) do
 		if type(v) == "table" and type(v[1]) == "function" then
 			params[k] = function(...)

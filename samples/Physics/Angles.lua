@@ -19,7 +19,7 @@ local angles = CBE.newVent {
 		cycleAngle = true,
 		angleIncr = 92, -- 90 + 2; add a quarter to the angles and increment the count by 2 for rotation
 		gravityY = 0,
-		autoAngle = true,
+		autoCalculateAngles = true,
 		angles = {
 			{0, 360}
 		}

@@ -1,12 +1,11 @@
-SampleCache Info
---------------------------------------------------------------------------------
+### Samples Info ###
 
-New to CBEffects? I've created a cache of samples just for you.
+New to CBEffects? Not new to CBEffects? I've created a cache of samples just for you.
 
-Use each sample by require()-ing the file; samples start automatically. After you start up a sample, look into the code and see what was required to create it. You'll also notice, at the top of each sample, there *may* be an "Academic Section". That's a tutorial for what's going on in that sample.
+Use each sample by `require()`-ing the file; samples start automatically. After you start up a sample, look into the code and see what was required to create it. You'll also notice, at the top of each sample, there *may* be an "Academic Section". That's a tutorial for what's going on in that sample.
 
 ```Lua
-require("SampleCache.Dynamics.RadiusTransition")
+require("samples.Dynamics.RadiusTransition")
 ```
 
 If you're a beginner, I'd recommend starting in this order:

@@ -5,7 +5,7 @@ GettingStarted/DoubleVent
 GettingStarted/BasicEvents
 Fields/BasicField
 Fields/AttractField
-Fields/MultiField
+Fields/DoubleField
 Physics/Angles
 Physics/Box2D
 Physics/Gravity
@@ -18,6 +18,8 @@ PositionType/InRect
 BuildFunctions/ProgrammerHelloWorld
 BuildFunctions/VectorShapes
 Interactivity/TouchPoint
-Interactivicty/MoveToTap
+Interactivity/MoveToTap
 Dynamics/RectTransition
 Dynamics/RadiusTransition
+ExampleEffects/Explosion1
+ExampleEffects/MortarExplosion
