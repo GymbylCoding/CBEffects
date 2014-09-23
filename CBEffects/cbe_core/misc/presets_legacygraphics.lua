@@ -99,7 +99,7 @@ presets.vents = {
 		inTime = 500,
 		outTime = 500,
 		startAlpha = 0,
-		onCreation = function(p) p.changeColor(burnColors[math_random(4)], 200) end,
+		onCreation = function(p) p:changeColor({color = burnColors[math_random(4)], time = 200}) end,
 		particleProperties = {blendMode = "add"},
 		physics = {
 			angles = {{80, 100}},
