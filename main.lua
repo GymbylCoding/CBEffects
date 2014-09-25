@@ -18,12 +18,9 @@ for s in samplesString:gmatch("(.-)\n") do samples[#samples + 1] = s end
 
 local sampleName = samples[math.random(#samples)]
 
--- print("Loading sample " .. sampleName)
 require("samples." .. sampleName:gsub("/", "."))
--- require("samples.ExampleEffects.Explosion1")
 
 local t = display.newText({
-	-- Manual kerning for fun and profit:
 	text = "Sample: " .. sampleName,
 	font = "CourierNewPSMT",
 	fontSize = 30
