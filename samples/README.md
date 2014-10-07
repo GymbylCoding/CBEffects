@@ -55,4 +55,9 @@ Dynamics - Mutating vents in realtime
  * RectTransition - Transitions rectangle position parameters
  * RadiusTransition - Transitions radius position parameters
 
+ExampleEffects - Some miscellaneous effects
+ * Explosion1 - A simple explosion
+ * MortarExplosion - A mortar that fires and explodes
+ * Sparkle - An Easter-egg/special thingy/treasure/whatever sparkle
+
 Caleb | Gymbyl Coding | www.gymbyl.com
