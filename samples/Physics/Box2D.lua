@@ -12,9 +12,9 @@ local physics = require("physics")
 physics.start()
 physics.setGravity(0, 9.8)
 
-local physicsVentGroup = CBE.newVentGroup {
+local physicsVentGroup = CBE.newVentGroup({
 	{
-		title = "snow", -- Though the preset already names the vent "snow", always title!
+		title = "snow1", -- Though the preset already names the vent "snow", always title!
 		preset = "snow",
 		alpha = 1,
 		onVentInit = function(v)
@@ -38,6 +38,6 @@ local physicsVentGroup = CBE.newVentGroup {
 			p.gravityScale = -2 -- Make particles move upwards
 		end
 	}
-}
+})
 
-physicsVentGroup:start("snow", "snow2")
+physicsVentGroup:start("snow1", "snow2")

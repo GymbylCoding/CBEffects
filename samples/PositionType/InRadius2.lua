@@ -8,7 +8,7 @@ Elliptical positioning of particles.
 
 local CBE = require("CBEffects.Library")
 
-local vent = CBE.newVent {
+local vent = CBE.newVent({
 	preset = "evil",
 	positionType = "inRadius",
 	xRadius = 200, -- Instead of a circle, this time we'll make an ellipse
@@ -16,6 +16,6 @@ local vent = CBE.newVent {
 	physics = {
 		velocity = 0
 	}
-}
+})
 
 vent:start()

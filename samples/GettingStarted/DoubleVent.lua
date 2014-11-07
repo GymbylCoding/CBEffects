@@ -44,7 +44,7 @@ ways.
 
 local CBE = require("CBEffects.Library")
 
-local double = CBE.newVentGroup {
+local double = CBE.newVentGroup({
 	{
 		title = "vent1",
 		x = display.contentCenterX * 0.5
@@ -54,6 +54,6 @@ local double = CBE.newVentGroup {
 		title = "vent2",
 		x = display.contentWidth * 0.75
 	}
-}
+})
 
 double.start("vent1", "vent2")

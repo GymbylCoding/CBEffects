@@ -26,6 +26,6 @@ vent:start(), which tells the vent to start emitting particles.
 
 local CBE = require("CBEffects.Library")
 
-local vent = CBE.newVent {}
+local vent = CBE.newVent({})
 
 vent:start()

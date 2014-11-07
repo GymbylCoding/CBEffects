@@ -24,7 +24,7 @@ local display_newRect = display.newRect
 local display_newCircle = display.newCircle
 local display_newPolygon = display.newPolygon
 
-local shapes = CBE.newVent {
+local shapes = CBE.newVent({
 	title = "HelloWorld",
 	radius = display.contentCenterY,
 
@@ -40,6 +40,6 @@ local shapes = CBE.newVent {
 			return display_newPolygon(0, 0, {0,0, size,0, size,size, -size,size * 2})
 		end
 	end
-}
+})
 
 shapes:start()

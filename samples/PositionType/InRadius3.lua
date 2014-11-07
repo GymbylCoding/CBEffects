@@ -8,7 +8,7 @@ Elliptical positioning of particles with inner X and Y radii.
 
 local CBE = require("CBEffects.Library")
 
-local vent = CBE.newVent {
+local vent = CBE.newVent({
 	preset = "evil",
 	positionType = "inRadius",
 	xRadius = 400, -- Make an elliptical shape
@@ -18,6 +18,6 @@ local vent = CBE.newVent {
 	physics = {
 		velocity = 0
 	}
-}
+})
 
 vent:start()

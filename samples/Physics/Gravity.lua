@@ -8,7 +8,7 @@ Demonstrates the effect of the gravity parameter on particles.
 
 local CBE = require("CBEffects.Library")
 
-local sample = CBE.newVent {
+local sample = CBE.newVent({
 	title = "laserVent",
 	preset = "lasergun",
 
@@ -24,6 +24,6 @@ local sample = CBE.newVent {
 		autoCalculateAngles = true,
 		angles = {{45, 65}}
 	}
-}
+})
 
 sample:start()

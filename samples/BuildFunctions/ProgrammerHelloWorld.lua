@@ -23,7 +23,7 @@ local helloWorldList = {
 	"echo \"Hello, world!\"" -- Bash, PHP, and others
 }
 
-local hello = CBE.newVent {
+local hello = CBE.newVent({
 	title = "HelloWorld",
 	radius = display.contentCenterY,
 
@@ -31,6 +31,6 @@ local hello = CBE.newVent {
 		local index = math_random(#helloWorldList) -- Random index of the helloWorldList
 		return display_newText(helloWorldList[index], 0, 0, "Courier New", 15)
 	end
-}
+})
 
 hello:start()

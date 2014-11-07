@@ -41,8 +41,8 @@ available presets to the terminal.
 
 local CBE = require("CBEffects.Library")
 
-local vent = CBE.newVent {
+local vent = CBE.newVent({
 	preset = "burn"
-}
+})
 
 vent:start()

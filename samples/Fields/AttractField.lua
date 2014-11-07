@@ -9,13 +9,13 @@ Creates a field that attracts particles.
 local CBE = require("CBEffects.Library")
 
 -- Create the vent
-local vent = CBE.newVent {
+local vent = CBE.newVent({
 	positionType = "inRect",
 	x = 0,
 	y = 0,
 	rectWidth = display.contentWidth,
 	rectHeight = display.contentHeight
-}
+})
 
 -- Create the field
 local field = CBE.newField {

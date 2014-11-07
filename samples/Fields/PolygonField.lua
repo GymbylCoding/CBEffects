@@ -9,7 +9,7 @@ Demonstrates a polygonal collision shape for a field.
 local CBE = require("CBEffects.Library")
 
 -- Here we'll make our vent
-local vent = CBE.newVent {
+local vent = CBE.newVent({
 	positionType = "inRect",
 	x = 0,
 	y = 0,
@@ -19,10 +19,10 @@ local vent = CBE.newVent {
 	physics = {
 		velocity = 0 -- Particles don't move
 	}
-}
+})
 
 -- And now our field
-local field = CBE.newField {
+local field = CBE.newField({
 	type = "polygon",
 	points = {
 		{30, 30},
@@ -32,7 +32,7 @@ local field = CBE.newField {
 	onCollision = function(p, f)
 		p._kill() -- Delete the particle
 	end
-}
+})
 
 -- Link the field to the vent
 field.linkVent(vent)

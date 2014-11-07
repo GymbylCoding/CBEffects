@@ -8,9 +8,9 @@ A vent that transitions to a tap event's location.
 
 local CBE = require("CBEffects.Library")
 
-local vent = CBE.newVent {
+local vent = CBE.newVent({
 	preset = "burn"
-}
+})
 
 local function onScreenTap(event)
 	if vent.trans then transition.cancel(vent.trans) end

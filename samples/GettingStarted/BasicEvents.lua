@@ -41,7 +41,7 @@ local CBE = require("CBEffects.Library")
 local tostring = tostring
 local print = print
 
-local vent = CBE.newVent {
+local vent = CBE.newVent({
 	perEmit = 1,
 	emitDelay = 1000,
 
@@ -56,6 +56,6 @@ local vent = CBE.newVent {
 	onDeath = function(particle, vent)
 		print("A particle died: " .. tostring(particle) .. ", " .. tostring(vent))
 	end
-}
+})
 
 vent:start()

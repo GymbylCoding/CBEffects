@@ -10,7 +10,7 @@ math.randomseed(os.time())
 --------------------------------------------------------------------------------
 local CBE = require("CBEffects.Library")
 
-local samplesFile = io.open(system.pathForFile("samples/samples.txt"), "r")
+local samplesFile = io.open(system.pathForFile("samples/SAMPLES.txt"), "r")
 local samplesString = samplesFile:read("*a")
 samplesFile:close()
 local samples = {}

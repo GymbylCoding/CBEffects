@@ -9,7 +9,7 @@ Transitions radius parameters.
 local CBE = require("CBEffects.Library")
 
 -- Create the vent
-local vent = CBE.newVent {
+local vent = CBE.newVent({
 	preset = "evil",
 	positionType = "inRadius",
 	xRadius = display.contentCenterX,
@@ -19,7 +19,7 @@ local vent = CBE.newVent {
 	physics = {
 		velocity = 0 -- Make particles stationary for visibility
 	}
-}
+})
 
 -- Start our transition
 transition.to(vent, {

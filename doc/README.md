@@ -1,1 +1,0 @@
-Unfinished; this will be the CBEffects guide folder.

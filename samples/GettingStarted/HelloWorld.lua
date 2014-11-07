@@ -36,12 +36,12 @@ local CBE = require("CBEffects.Library")
 
 local display_newText = display.newText
 
-local hello = CBE.newVent {
+local hello = CBE.newVent({
 	preset = "water",
-	
+
 	build = function()
 		return display_newText("Hello, World!", 0, 0, "Trebuchet MS", 30)
 	end
-}
+})
 
 hello:start()

@@ -32,7 +32,7 @@ particles there. So if you create an innerRadius that's just a bit smaller than
 the radius, you'll get particles positioned in a ring. That's what we do to the
 vent.
 
-We also provide an onCreation function for the particles that gives them an 
+We also provide an onCreation function for the particles that gives them an
 initial velocity toward the center of the screen using setVelocity and two
 simple calculations.
 
@@ -49,17 +49,17 @@ they'll do nothing.
 
 local CBE = require("CBEffects.Library")
 
-local vent = CBE.newVent {
+local vent = CBE.newVent({
 	radius = display.contentCenterX * 0.5,
 	innerRadius = display.contentCenterX * 0.45,
 	onCreation = function(p)
 		p:setVelocity((display.contentCenterX - p.x) * 0.02, (display.contentCenterY - p.y) * 0.02)
 	end
-}
+})
 
-local field = CBE.newField {
+local field = CBE.newField({
 	preset = "stop" -- Fields have presets too
-}
+})
 
 -- Link the field to the vent
 vent.linkField(field)

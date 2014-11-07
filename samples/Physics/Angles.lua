@@ -8,7 +8,7 @@ Demonstrates how to use angle parameters to control particle direction.
 
 local CBE = require("CBEffects.Library")
 
-local angles = CBE.newVent {
+local angles = CBE.newVent({
 	title = "angles",
 	preset = "fountain",
 	positionType = "atPoint", -- Keep particles at a single point with no randomness
@@ -24,6 +24,6 @@ local angles = CBE.newVent {
 			{0, 360}
 		}
 	}
-}
+})
 
 angles:start()

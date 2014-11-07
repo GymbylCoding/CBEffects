@@ -8,7 +8,7 @@ Inner and outer radius positioning of particles.
 
 local CBE = require("CBEffects.Library")
 
-local vent = CBE.newVent {
+local vent = CBE.newVent({
 	preset = "evil",
 	positionType = "inRadius",
 	radius = 100,
@@ -16,6 +16,6 @@ local vent = CBE.newVent {
 	physics = {
 		velocity = 0
 	}
-}
+})
 
 vent:start()
