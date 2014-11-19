@@ -9,6 +9,7 @@ Fields/DoubleField
 Physics/Angles
 Physics/Box2D
 Physics/Gravity
+Physics/Hose
 PositionType/BasicRadius
 PositionType/InRadius1
 PositionType/InRadius2

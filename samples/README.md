@@ -34,6 +34,7 @@ Physics - Adding physical behavior to particles
  * Angles - Using angle parameters
  * Box2D - Implementing Box2D physics
  * Gravity - The effect of gravity on particles
+ * Hose - `cycleAngle` parameter usage
 
 PositionType - Different ways of positioning particles
  * BasicRadius - Basic inRadius usage
@@ -55,7 +56,7 @@ Dynamics - Mutating vents in realtime
  * RectTransition - Transitions rectangle position parameters
  * RadiusTransition - Transitions radius position parameters
 
-ExampleEffects - Some miscellaneous effects
+ExampleEffects - Miscellaneous full-scale example effects
  * Explosion1 - A simple explosion
  * MortarExplosion - A mortar that fires and explodes
  * Sparkle - An Easter-egg/special thingy/treasure/whatever sparkle
