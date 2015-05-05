@@ -8,7 +8,7 @@ Demonstrates the basic usage of a field.
 The Academic Section
 --------------------
 
-CBEffects gives you two types of objects to make particle effects with: vents
+CBE gives you two types of objects to make particle effects with: vents
 and fields. A vent emits particles; a field modifies those that are emitted by a
 vent. Fields are constructed and used almost identically to vents in every way.
 A field works by setting up a virtual collision sensor and checking for
@@ -19,15 +19,15 @@ parameters.
 To construct a field, call the newField() function with a table of values.
 The values inside the table work in the same was as vent values. Fields also
 have presets that work the same way as vent presets: if you provide a preset to
-use, CBEffects will use those values as the defaults, but you can always
+use, CBE will use those values as the defaults, but you can always
 override them.
 
 Here you'll notice two new parameters in the vent constructor: radius and
-innerRadius. These tell CBEffects how to position particles. The default preset
+innerRadius. These tell CBE how to position particles. The default preset
 makes particles appear inside of a circle, so the "radius" parameter just tells
 the size of the circle particles will appear in. innerRadius is a value that
 tells the size of the circles particles will *not* appear in. In a way, it cuts
-out another circle inside the main circle and tells CBEffects not to position
+out another circle inside the main circle and tells CBE not to position
 particles there. So if you create an innerRadius that's just a bit smaller than
 the radius, you'll get particles positioned in a ring. That's what we do to the
 vent.
@@ -47,7 +47,7 @@ they'll do nothing.
 --]]
 --------------------------------------------------------------------------------
 
-local CBE = require("CBEffects.Library")
+local CBE = require("CBE.CBE")
 
 local vent = CBE.newVent({
 	radius = display.contentCenterX * 0.5,
@@ -62,8 +62,8 @@ local field = CBE.newField({
 })
 
 -- Link the field to the vent
-vent.linkField(field)
---field.linkVent(vent) -- Alias for the above
+vent:linkField(field)
+--field:linkVent(vent) -- Alias for the above
 
 -- Start the vent and the field
 vent:start()

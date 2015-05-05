@@ -6,13 +6,13 @@ Creates two fields inside a FieldGroup that attract and repel particles.
 --]]
 --------------------------------------------------------------------------------
 
-local CBE = require("CBEffects.Library")
+local CBE = require("CBE.CBE")
 
 -- Create the Vent
 local vent = CBE.newVent({
 	title = "vent",
-	x = 0,
-	y = 0,
+	emitX = 0,
+	emitY = 0,
 	positionType = "inRect",
 	rectWidth = display.contentWidth,
 	rectHeight = display.contentHeight

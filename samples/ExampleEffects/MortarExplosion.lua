@@ -6,7 +6,7 @@ Based on Explosion 1, it's a mortar that launches and explodes.
 --]]
 --------------------------------------------------------------------------------
 
-local CBE = require("CBEffects.Library")
+local CBE = require("CBE.CBE")
 
 local mortarX, mortarY
 
@@ -21,8 +21,8 @@ ventGroup = CBE.newVentGroup({
 		positionType = "inRadius",
 		color = {{1, 1, 0}, {1, 0.5, 0}},
 		particleProperties = {blendMode = "add"},
-		x = display.contentCenterX,
-		y = display.contentCenterY,
+		emitX = display.contentCenterX,
+		emitY = display.contentCenterY,
 
 		emissionNum = 5,
 		emitDelay = 5,
@@ -65,7 +65,7 @@ ventGroup = CBE.newVentGroup({
 
 		onUpdate = function(particle)
 			if particle.x < display.screenOriginX or particle.x > display.contentWidth - display.screenOriginX or particle.y < display.screenOriginY or particle.y > display.contentHeight - display.screenOriginY then
-				particle._kill()
+				particle:destroyParticle()
 			end
 		end,
 
@@ -81,7 +81,7 @@ ventGroup = CBE.newVentGroup({
 			gravityY = 0.5,
 			useVelFunction = true,
 			velFunction = function(particle, vent)
-				return (mortarX - vent.x) * 0.05, (mortarY - vent.y) * 0.05
+				return (mortarX - vent.emitX) * 0.05, (mortarY - vent.emitY) * 0.05
 			end
 		}
 	}

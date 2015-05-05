@@ -6,7 +6,7 @@ Inner and outer radius positioning of particles.
 --]]
 --------------------------------------------------------------------------------
 
-local CBE = require("CBEffects.Library")
+local CBE = require("CBE.CBE")
 
 local vent = CBE.newVent({
 	preset = "evil",

@@ -1,0 +1,46 @@
+*******
+* CBE *
+*******
+
+Written by Caleb Place of Gymbyl Coding
+
+www.github.com/GymbylCoding
+www.gymbyl.com
+gymbylcoding.github.io
+
+Version: 3.2
+
+Contents of this folder:
+	Library itself (CBE.lua, cbe_core/*)
+	about.txt
+	Basic texture set used for samples (textures/*)
+
+
+*************************
+* Using Legacy Graphics *
+*************************
+
+CBE 3.2 does NOT support Corona's legacy graphics version. If you need it for some reason, use CBE 3.1.
+
+
+*******************
+* Get Sold on CBE *
+*******************
+
+As the ultimate particle effects system of Corona SDK, CBE melds ease of use and infinite flexibility to create a vastly powerful engine and a completely new way of creating and managing particle effects. It gives you utter control over the very fabric of each particle to provide the quickest, easiest, and most beatiful visuals Corona SDK can create. Rather than forcing the programmer to stick to tight rules and rigid guidelines, CBE allows the programmer to completely customize every minute aspect of their effect, while at the same time allowing the user to step back and let the engine take over, if they so desire. The best part? It's completely free and open-source.
+
+
+***********
+* License *
+***********
+
+Distributed under the TSL:
+- This project is free to get
+- This project is free to use
+- This project is free to edit
+- This project is free to use in a free or commercial game
+- This project is free to use in a free or commercial non-game app
+- This project is free to use without crediting the author (credits are still appreciated)
+- This project is free to use without crediting the project (credits are still appreciated)
+- This project is NOT free to sell for anything
+- This project is NOT free to credit yourself with (unless you port it to another framework or language, in which case a reference to the original author must be made)

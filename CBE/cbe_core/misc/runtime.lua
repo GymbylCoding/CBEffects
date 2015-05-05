@@ -1,8 +1,8 @@
 --------------------------------------------------------------------------------
 --[[
-CBEffects Component: Runtime
+CBE Component: Runtime
 
-CBEffects runtime system.
+CBE runtime system.
 --]]
 --------------------------------------------------------------------------------
 
@@ -11,7 +11,7 @@ local lib_runtime = {}
 --------------------------------------------------------------------------------
 -- Localize and Include Libraries
 --------------------------------------------------------------------------------
-local lib_vst = require("CBEffects.cbe_core.misc.vs-t")
+local lib_vst = require("CBE.cbe_core.misc.vs-t")
 
 local system_getTimer = system.getTimer
 

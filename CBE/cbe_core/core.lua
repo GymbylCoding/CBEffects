@@ -1,6 +1,6 @@
 --------------------------------------------------------------------------------
 --[[
-CBEffects Component: Core
+CBE Component: Core
 
 Wraps up all core libraries and provides the VentGroup and FieldGroup functions.
 --]]
@@ -13,10 +13,10 @@ local core = {}
 --------------------------------------------------------------------------------
 local require = require
 
-local vent_core = require("CBEffects.cbe_core.vent_core.core")
-local field_core = require("CBEffects.cbe_core.field_core.core")
-local lib_presets = require("CBEffects.cbe_core.misc.presets")
-local lib_vst = require("CBEffects.cbe_core.misc.vs-t")
+local vent_core = require("CBE.cbe_core.vent_core.core")
+local field_core = require("CBE.cbe_core.field_core.core")
+local lib_presets = require("CBE.cbe_core.misc.presets")
+local lib_vst = require("CBE.cbe_core.misc.vs-t")
 
 local print = print
 local type = type
@@ -54,7 +54,7 @@ function core.newVentGroup(params)
 	------------------------------------------------------------------------------
 	-- Add a Vent
 	------------------------------------------------------------------------------
-	function master.addVent(params)
+	function master:addVent(params)
 		local vent
 		if params._cbe_reserved and params._cbe_reserved.isVent then
 			vent = params
@@ -70,7 +70,7 @@ function core.newVentGroup(params)
 	------------------------------------------------------------------------------
 	-- Start All
 	------------------------------------------------------------------------------
-	function master.startMaster()
+	function master:startAll()
 		for vent in vents.items() do
 			if vent.isActive then
 				vent.start()
@@ -81,7 +81,7 @@ function core.newVentGroup(params)
 	------------------------------------------------------------------------------
 	-- Stop All
 	------------------------------------------------------------------------------
-	function master.stopMaster()
+	function master:stopAll()
 		for vent in vents.items() do
 			vent.stop()
 		end
@@ -90,7 +90,7 @@ function core.newVentGroup(params)
 	------------------------------------------------------------------------------
 	-- Emit from All
 	------------------------------------------------------------------------------
-	function master.emitMaster()
+	function master:emitAll()
 		for vent in vents.items() do
 			if vent.isActive then
 				vent.emit()
@@ -101,7 +101,7 @@ function core.newVentGroup(params)
 	------------------------------------------------------------------------------
 	-- Destroy VentGroup
 	------------------------------------------------------------------------------
-	function master.destroyMaster()
+	function master:destroyAll()
 		for vent, index in vents.items() do
 			vent._cbe_reserved.destroy()
 			vents.markForRemoval(index)
@@ -116,7 +116,7 @@ function core.newVentGroup(params)
 	------------------------------------------------------------------------------
 	-- Start Vents
 	------------------------------------------------------------------------------
-	function master.start(...)
+	function master:start(...)
 		local args = {...}
 		local s = (type(args[1]) == "table" and 2) or 1
 		for i = s, #args do
@@ -132,10 +132,10 @@ function core.newVentGroup(params)
 	------------------------------------------------------------------------------
 	-- Stop Vents
 	------------------------------------------------------------------------------
-	function master.stop(...)
+	function master:stop(...)
 		local args = {...}
-		local s = (type(args[1]) == "table" and 2) or 1
-		for i = s, #args do
+
+		for i = 1, #args do
 			local index = titleReference[args[i] ]
 			if index then
 				vents.get(index).stop()
@@ -148,10 +148,10 @@ function core.newVentGroup(params)
 	------------------------------------------------------------------------------
 	-- Emit from Vents
 	------------------------------------------------------------------------------
-	function master.emit(...)
+	function master:emit(...)
 		local args = {...}
-		local s = (type(args[1]) == "table" and 2) or 1
-		for i = s, #args do
+
+		for i = 1, #args do
 			local index = titleReference[args[i] ]
 			if index then
 				vents.get(index).emit()
@@ -164,12 +164,11 @@ function core.newVentGroup(params)
 	------------------------------------------------------------------------------
 	-- Get Vents
 	------------------------------------------------------------------------------
-	function master.get(...)
+	function master:get(...)
 		local args = {...}
 		local getTable = {}
 
-		local s = (type(args[1]) == "table" and 2) or 1
-		for i = s, #args do
+		for i = 1, #args do
 			local index = titleReference[args[i] ]
 			if index then
 				table_insert(getTable, vents.get(index))
@@ -185,11 +184,10 @@ function core.newVentGroup(params)
 	------------------------------------------------------------------------------
 	-- Destroy Vents
 	------------------------------------------------------------------------------
-	function master.destroy(...)
+	function master:destroy(...)
 		local args = {...}
-		local s = (type(args[1]) == "table" and 2) or 1
 
-		for i = s, #args do
+		for i = 1, #args do
 			local index = titleReference[args[i] ]
 			if index then
 				vents.get(index)._cbe_reserved.destroy()
@@ -206,7 +204,7 @@ function core.newVentGroup(params)
 	------------------------------------------------------------------------------
 	-- List Vents
 	------------------------------------------------------------------------------
-	function master.listVents()
+	function master:listVents()
 		print("listVents():")
 		for vent, i in vents.items() do
 			print("-> " .. vent.title)
@@ -216,13 +214,20 @@ function core.newVentGroup(params)
 	------------------------------------------------------------------------------
 	-- Convenience Functions
 	------------------------------------------------------------------------------
-	function master.move(self, title, x, y) local title, x, y = title, x, y if not y then title, x, y = self, title, x end local index = titleReference[title] if not index then print("move(): Missing vent.") return false end vents.get(index).set({x = x, y = y}) end
-	master.translate = master.move
+	function master:move(title, x, y)
+		local title, x, y = title, x, y
+		local index = titleReference[title]
+		if not index then
+			print("move(): Missing vent.")
+			return false
+		end
+		vents.get(index):set({emitX = x, emitY = y})
+	end
 
 	------------------------------------------------------------------------------
 	-- Build Initial Vents
 	------------------------------------------------------------------------------
-	for i = 1, #params do master.addVent(params[i]) end
+	for i = 1, #params do master:addVent(params[i]) end
 
 	return master
 end
@@ -247,7 +252,7 @@ function core.newFieldGroup(params)
 	------------------------------------------------------------------------------
 	-- Add a Field
 	------------------------------------------------------------------------------
-	function master.addField(params)
+	function master:addField(params)
 		local field
 		if params._cbe_reserved and params._cbe_reserved.isField then
 			field = params
@@ -263,10 +268,10 @@ function core.newFieldGroup(params)
 	------------------------------------------------------------------------------
 	-- Start All
 	------------------------------------------------------------------------------
-	function master.startMaster()
+	function master:startAll()
 		for field in fields.items() do
 			if field.isActive then
-				field.start()
+				field:start()
 			end
 		end
 	end
@@ -274,16 +279,16 @@ function core.newFieldGroup(params)
 	------------------------------------------------------------------------------
 	-- Stop All
 	------------------------------------------------------------------------------
-	function master.stopMaster()
+	function master:stopAll()
 		for field in fields.items() do
-			field.stop()
+			field:stop()
 		end
 	end
 
 	------------------------------------------------------------------------------
 	-- Destroy Master
 	------------------------------------------------------------------------------
-	function master.destroyMaster()
+	function master:destroyAll()
 		for field in fields.items() do
 			fields.markForRemoval(field._cbe_reserved.fieldGroupIndex)
 		end
@@ -294,10 +299,10 @@ function core.newFieldGroup(params)
 	------------------------------------------------------------------------------
 	-- Start Fields
 	------------------------------------------------------------------------------
-	function master.start(...)
+	function master:start(...)
 		local args = {...}
-		local s = (type(args[1]) == "table" and 2) or 1
-		for i = s, #args do
+		
+		for i = 1, #args do
 			local index = titleReference[args[i] ]
 			if index then
 				fields.get(index).start()
@@ -310,10 +315,10 @@ function core.newFieldGroup(params)
 	------------------------------------------------------------------------------
 	-- Stop Fields
 	------------------------------------------------------------------------------
-	function master.stop(...)
+	function master:stop(...)
 		local args = {...}
-		local s = (type(args[1]) == "table" and 2) or 1
-		for i = s, #args do
+
+		for i = 1, #args do
 			local index = titleReference[args[i] ]
 			if index then
 				fields.get(index).stop()
@@ -326,12 +331,11 @@ function core.newFieldGroup(params)
 	------------------------------------------------------------------------------
 	-- Get Fields
 	------------------------------------------------------------------------------
-	function master.get(...)
+	function master:get(...)
 		local args = {...}
 		local getTable = {}
 
-		local s = (type(args[1]) == "table" and 2) or 1
-		for i = s, #args do
+		for i = 1, #args do
 			local index = titleReference[args[i] ]
 			if index then
 				table_insert(getTable, fields.get(index))
@@ -347,17 +351,22 @@ function core.newFieldGroup(params)
 	------------------------------------------------------------------------------
 	-- Convenience Functions
 	------------------------------------------------------------------------------
-	function master.move(self, title, x, y) local title, x, y = title, x, y if not y then title, x, y = self, title, x end local index = titleReference[title] if not index then print("move(): Missing field \"" .. title .. "\".") return false end fields.get(index).set({x = x, y = y}) end
-	master.translate = master.move
+	function master:move(title, x, y)
+		local index = titleReference[title]
+		if not index then
+			print("move(): Missing field \"" .. title .. "\".")
+			return false
+		end
+		fields.get(index).set({x = x, y = y})
+	end
 
 	------------------------------------------------------------------------------
 	-- Destroy Fields
 	------------------------------------------------------------------------------
-	function master.destroy(...)
+	function master:destroy(...)
 		local args = {...}
-		local s = (type(args[1]) == "table" and 2) or 1
 
-		for i = s, #args do
+		for i = 1, #args do
 			local index = titleReference[args[i] ]
 			if index then
 				fields.markForRemoval(index)
@@ -373,7 +382,7 @@ function core.newFieldGroup(params)
 	------------------------------------------------------------------------------
 	-- List Fields
 	------------------------------------------------------------------------------
-	function master.listFields()
+	function master:listFields()
 		print("listFields():")
 		for field, i in fields.items() do
 			print("-> " .. field.title)
@@ -383,7 +392,7 @@ function core.newFieldGroup(params)
 	------------------------------------------------------------------------------
 	-- Build Initial Fields
 	------------------------------------------------------------------------------
-	for i = 1, #params do master.addField(params[i]) end
+	for i = 1, #params do master:addField(params[i]) end
 
 	return master
 end

@@ -4,16 +4,14 @@ HelloWorld
 
 Loads the water preset and changes particles to text objects that say "Hello, World!"
 
-This is the CBEffects version of the classic tutorial :)
-
 
 The Academic Section
 --------------------
 
 You'll notice in this sample we've provided another parameter: "build". This
-parameter is a very cool feature of CBEffects. Instead of clamping the user to
+parameter is a very cool feature of CBE. Instead of clamping the user to
 parameters like particle width, particle height, particle image, type of
-particle, etc., CBEffects simply lets the user provide a "build" function. Then,
+particle, etc., CBE simply lets the user provide a "build" function. Then,
 to create particles, the vent internally calls that function and uses whatever
 gets returned as particles. Want rectangles with a varying width between 60 and
 191? Put it in the build function and that's what you'll get. How about sprites
@@ -32,7 +30,7 @@ text that says "Hello, World!".
 --]]
 --------------------------------------------------------------------------------
 
-local CBE = require("CBEffects.Library")
+local CBE = require("CBE.CBE")
 
 local display_newText = display.newText
 

@@ -8,7 +8,7 @@ Demonstrates onCreation, onUpdate, and onDeath particle event basics.
 The Academic Section
 --------------------
 
-One of the things that makes CBEffects so customizable is the presence of
+One of the things that makes CBE so customizable is the presence of
 particle event functions. Particle events are like listeners and are called at
 specific periods of a particle's lifetime. Each particle event gets both the
 particle and the vent as arguments when the function is called.
@@ -36,7 +36,7 @@ actually do whatever you like in the event functions.
 --]]
 --------------------------------------------------------------------------------
 
-local CBE = require("CBEffects.Library")
+local CBE = require("CBE.CBE")
 
 local tostring = tostring
 local print = print
@@ -58,4 +58,4 @@ local vent = CBE.newVent({
 	end
 })
 
-vent:start()
+vent.start()

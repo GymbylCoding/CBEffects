@@ -6,7 +6,7 @@ A sparkle effect.
 --]]
 --------------------------------------------------------------------------------
 
-local CBE = require("CBEffects.Library")
+local CBE = require("CBE.CBE")
 
 local math_random = math.random
 local display_newImageRect = display.newImageRect

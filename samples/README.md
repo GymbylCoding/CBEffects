@@ -1,12 +1,8 @@
-### Samples Info ###
+### Samples Info
 
-New to CBEffects? Not new to CBEffects? I've created a cache of samples just for you.
+New to CBE? Not new to CBE? I've created a cache of samples just for you.
 
-Use each sample by `require()`-ing the file; samples start automatically. After you start up a sample, look into the code and see what was required to create it. You'll also notice, at the top of each sample, there *may* be an "Academic Section". That's a tutorial for what's going on in that sample.
-
-```Lua
-require("samples.Dynamics.RadiusTransition")
-```
+Use each sample by clicking the corresponding button when you start the CBE sample app. After you start up a sample, look into the code and see what was required to create it. You'll also notice, at the top of each sample, there *may* be an "Academic Section". That's a tutorial for what's going on in that sample.
 
 If you're a beginner, I'd recommend starting in this order:
  * GettingStarted/BasicVent
@@ -15,10 +11,11 @@ If you're a beginner, I'd recommend starting in this order:
  * GettingStarted/DoubleVent
  * GettingStarted/BasicEvents
  * PositionType/BasicRadius
+ * Everything else; go crazy
 
 #### List of Samples: ####
 
-GettingStarted - Getting started with CBEffects
+GettingStarted - Getting started with CBE
  * BasicVent - Create and start a vent
  * DoubleVent - VentGroup basics
  * LoadPreset - Load a preset

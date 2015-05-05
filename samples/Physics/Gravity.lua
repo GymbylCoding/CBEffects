@@ -6,7 +6,7 @@ Demonstrates the effect of the gravity parameter on particles.
 --]]
 --------------------------------------------------------------------------------
 
-local CBE = require("CBEffects.Library")
+local CBE = require("CBE.CBE")
 
 local sample = CBE.newVent({
 	title = "laserVent",
@@ -20,7 +20,7 @@ local sample = CBE.newVent({
 	lifeTime = 300,
 	physics = {
 		velocity = 20,
-		gravityY = 0.5, -- Set the gravity
+		gravityY = 0.5,
 		autoCalculateAngles = true,
 		angles = {{45, 65}}
 	}

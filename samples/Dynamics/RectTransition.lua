@@ -6,18 +6,18 @@ Transitioning vent rectangle parameters.
 --]]
 --------------------------------------------------------------------------------
 
-local CBE = require("CBEffects.Library")
+local CBE = require("CBE.CBE")
 
 -- Create the vent
 local vent = CBE.newVent({
 	positionType = "inRect",
-	x = 0, y = 0, -- X and Y work as offsets with inRect position type
+	emitX = 0, emitY = 0, -- X and Y work as offsets with inRect position type
 	rectWidth = display.contentWidth,
 	rectHeight = display.contentCenterY * 0.5,
 	rectTop = display.contentCenterY * 0.75
 })
 
--- Start our transition
+-- Start the transition
 transition.to(vent, {
 	rectWidth = display.contentCenterX * 0.5,
 	rectHeight = display.contentHeight,

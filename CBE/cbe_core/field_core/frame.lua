@@ -1,6 +1,6 @@
 --------------------------------------------------------------------------------
 --[[
-CBEffects Component: Field Frame
+CBE Component: Field Frame
 
 Builds the framework for a CBField object.
 --]]
@@ -11,8 +11,8 @@ local lib_fieldframe = {}
 --------------------------------------------------------------------------------
 -- Include Libraries and Localize
 --------------------------------------------------------------------------------
-local screen = require("CBEffects.cbe_core.misc.screen")
-local lib_functions = require("CBEffects.cbe_core.misc.functions")
+local screen = require("CBE.cbe_core.misc.screen")
+local lib_functions = require("CBE.cbe_core.misc.functions")
 
 local pairs = pairs
 local assert = assert
@@ -38,8 +38,8 @@ function lib_fieldframe.newFrame(params, preset)
 		type         = fnn(params.type, params.shape, preset.type, "circle"),
 		x            = fnn(params.x, preset.x, screen.centerX),
 		y            = fnn(params.y, preset.y, screen.centerY),
-		width        = fnn(params.width, preset.width, screen.centerX),
-		height       = fnn(params.height, preset.height, screen.centerY),
+		width        = fnn(params.width, params.rectWidth, preset.width, screen.centerX),
+		height       = fnn(params.height, params.rectHeight, preset.height, screen.centerY),
 		radius       = fnn(params.radius, preset.radius, 200),
 		points       = fnn(params.points, preset.points, {{0,0}, {100,0}, {100,100}, {0,100}}),
 		onCollision  = fnn(params.onCollision, preset.onCollision, function(p, f) p:applyParticleForce((f.x - p.x) * 0.01,  (f.y - p.y) * 0.01) end),

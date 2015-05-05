@@ -10,9 +10,9 @@ The Academic Section
 
 In this sample, there are a few new things that we've done. First of all, we've
 introduced a new function: CBE.newVentGroup(). Second, we have two new parameters:
-"title" and "x".
+"title" and "emitX".
 
-To provide easier management for multiple vents, CBEffects provides an object
+To provide easier management for multiple vents, CBE provides an object
 called a "VentGroup". It keeps track of all vents inside it internally, and lets
 you access their methods through the VentGroup, rather than individually. To
 create a VentGroup, use the CBE.newVentGroup() command.
@@ -29,31 +29,27 @@ is used to create a separate vent.
 
 In this sample, we create a VentGroup with two vents in it. One we call "vent1"
 and the other we call "vent2". Then, we start both of them with the VentGroup's
-.start() command. This command takes a list of titles and starts each vent whose
-title appears in that list. So when we say "double.start("vent1", "vent2")",
+:start() command. This command takes a list of titles and starts each vent whose
+title appears in that list. So when we say "double:start("vent1", "vent2")",
 that's like saying, "VentGroup, start the vents I titled 'vent1' and 'vent2'".
 There is another way to start vents in a VentGroup, but I'm not going to go into
 it right now.
 
-As a side note, an interesting feature of CBEffects that I added is that you can
-use either a colon (:) or a dot (.) for VentGroup function calls; they work both
-ways.
-
 --]]
 --------------------------------------------------------------------------------
 
-local CBE = require("CBEffects.Library")
+local CBE = require("CBE.CBE")
 
 local double = CBE.newVentGroup({
 	{
 		title = "vent1",
-		x = display.contentCenterX * 0.5
+		emitX = display.contentCenterX * 0.5
 	},
 
 	{
 		title = "vent2",
-		x = display.contentWidth * 0.75
+		emitX = display.contentWidth * 0.75
 	}
 })
 
-double.start("vent1", "vent2")
+double:start("vent1", "vent2")

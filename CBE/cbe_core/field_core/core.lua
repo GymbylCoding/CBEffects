@@ -1,6 +1,6 @@
 --------------------------------------------------------------------------------
 --[[
-CBEffects Component: Field Core
+CBE Component: Field Core
 
 Core engine for fields.
 --]]
@@ -13,12 +13,12 @@ local field_core = {}
 --------------------------------------------------------------------------------
 local require = require
 
-local screen = require("CBEffects.cbe_core.misc.screen")
-local lib_runtime = require("CBEffects.cbe_core.misc.runtime")
-local lib_frame = require("CBEffects.cbe_core.field_core.frame")
-local lib_presets = require("CBEffects.cbe_core.misc.presets")
-local lib_functions = require("CBEffects.cbe_core.misc.functions")
-local lib_vst = require("CBEffects.cbe_core.misc.vs-t")
+local screen = require("CBE.cbe_core.misc.screen")
+local lib_runtime = require("CBE.cbe_core.misc.runtime")
+local lib_frame = require("CBE.cbe_core.field_core.frame")
+local lib_presets = require("CBE.cbe_core.misc.presets")
+local lib_functions = require("CBE.cbe_core.misc.functions")
+local lib_vst = require("CBE.cbe_core.misc.vs-t")
 
 local pointInPolygon = lib_functions.pointInPolygon
 

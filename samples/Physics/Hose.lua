@@ -6,7 +6,7 @@ Demonstrates use of cycleAngle to wave back and forth.
 --]]
 --------------------------------------------------------------------------------
 
-local CBE = require("CBEffects.Library")
+local CBE = require("CBE.CBE")
 
 local display_newImageRect = display.newImageRect
 

@@ -1,6 +1,6 @@
 --------------------------------------------------------------------------------
 --[[
-CBEffects Component: Screen
+CBE Component: Screen
 
 Gives correct screen dimensions.
 --]]

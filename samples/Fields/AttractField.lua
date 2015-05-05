@@ -6,13 +6,13 @@ Creates a field that attracts particles.
 --]]
 --------------------------------------------------------------------------------
 
-local CBE = require("CBEffects.Library")
+local CBE = require("CBE.CBE")
 
 -- Create the vent
 local vent = CBE.newVent({
 	positionType = "inRect",
-	x = 0,
-	y = 0,
+	emitX = 0,
+	emitY = 0,
 	rectWidth = display.contentWidth,
 	rectHeight = display.contentHeight
 })
@@ -27,8 +27,8 @@ local field = CBE.newField {
 -- Link the field to the vent in one of three ways
 
 -- Way #1:
-vent.linkField(field)
--- Way #2: field.linkVent(vent) - alias for vent.linkField(field)
+vent:linkField(field)
+-- Way #2: field:linkVent(vent) - alias for vent.linkField(field)
 -- Way #3: In parameters for the field, put "targetVent = vent"
 
 

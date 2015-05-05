@@ -1,8 +1,8 @@
 --------------------------------------------------------------------------------
 --[[
-CBEffects Component: Functions
+CBE Component: Functions
 
-Various helper functions for the rest of CBEffects to use.
+Various helper functions for the rest of CBE to use.
 --]]
 --------------------------------------------------------------------------------
 

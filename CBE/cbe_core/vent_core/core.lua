@@ -1,6 +1,6 @@
 --------------------------------------------------------------------------------
 --[[
-CBEffects Component: Vent Core
+CBE Component: Vent Core
 
 Core engine for vents.
 --]]
@@ -13,14 +13,14 @@ local vent_core = {}
 --------------------------------------------------------------------------------
 local require = require
 
-local screen = require("CBEffects.cbe_core.misc.screen")
-local lib_runtime = require("CBEffects.cbe_core.misc.runtime")
-local lib_frame = require("CBEffects.cbe_core.vent_core.frame")
-local lib_presets = require("CBEffects.cbe_core.misc.presets")
-local lib_uniquecode = require("CBEffects.cbe_core.misc.uniquecode")
-local lib_functions = require("CBEffects.cbe_core.misc.functions")
-local lib_iterate = require("CBEffects.cbe_core.vent_core.iterate")
-local lib_vst = require("CBEffects.cbe_core.misc.vs-t")
+local screen = require("CBE.cbe_core.misc.screen")
+local lib_runtime = require("CBE.cbe_core.misc.runtime")
+local lib_frame = require("CBE.cbe_core.vent_core.frame")
+local lib_presets = require("CBE.cbe_core.misc.presets")
+local lib_uniquecode = require("CBE.cbe_core.misc.uniquecode")
+local lib_functions = require("CBE.cbe_core.misc.functions")
+local lib_iterate = require("CBE.cbe_core.vent_core.iterate")
+local lib_vst = require("CBE.cbe_core.misc.vs-t")
 
 local type = type
 local pairs = pairs
@@ -147,7 +147,7 @@ function vent_core.new(params)
 			--------------------------------------------------------------------------
 			-- Kill Particle
 			--------------------------------------------------------------------------
-			function p._kill()
+			function p:destroyParticle()
 				if p._cbe_reserved.transition then transition_cancel(p._cbe_reserved.transition) end
 				vent.onDeath(p, vent)
 				display_remove(p)
@@ -240,14 +240,14 @@ function vent_core.new(params)
 			-- Set Position
 			--------------------------------------------------------------------------
 			if vent.positionType == "inRadius" then
-				p.x, p.y = getPointInRadius(vent.x, vent.y, vent.xRadius * vent.scaleX, vent.yRadius * vent.scaleY, vent.innerXRadius * vent.scaleX, vent.innerYRadius * vent.scaleY)
+				p.x, p.y = getPointInRadius(vent.emitX, vent.emitY, vent.xRadius * vent.scaleX, vent.yRadius * vent.scaleY, vent.innerXRadius * vent.scaleX, vent.innerYRadius * vent.scaleY)
 			elseif vent.positionType == "alongLine" then
 				local point = either(vent.calculatedLinePoints)
-				p.x, p.y = (point[1] + vent.x) * vent.scaleX, (point[2] + vent.y) * vent.scaleY
+				p.x, p.y = (point[1] + vent.emitX) * vent.scaleX, (point[2] + vent.emitY) * vent.scaleY
 			elseif vent.positionType == "inRect" then
-				p.x, p.y = math_random(vent.rectLeft, vent.rectLeft + vent.rectWidth) * vent.scaleX + vent.x, math_random(vent.rectTop, vent.rectTop + vent.rectHeight) * vent.scaleY + vent.y
+				p.x, p.y = math_random(vent.rectLeft, vent.rectLeft + vent.rectWidth) * vent.scaleX + vent.emitX, math_random(vent.rectTop, vent.rectTop + vent.rectHeight) * vent.scaleY + vent.emitY
 			elseif vent.positionType == "atPoint" then
-				p.x, p.y = vent.x, vent.y
+				p.x, p.y = vent.emitX, vent.emitY
 			elseif vent.positionType == "fromPointList" then
 				local point
 				if vent.cyclePoint then
@@ -256,7 +256,7 @@ function vent_core.new(params)
 				else
 					point = either(vent.pointList)
 				end
-				p.x, p.y = (point[1] or point.x) + vent.x, (point[2] or point.y) + vent.y
+				p.x, p.y = (point[1] or point.x) + vent.emitX, (point[2] or point.y) + vent.emitY
 			elseif type(vent.positionType) == "function" then
 				p.x, p.y = vent.positionType(p, vent, vent.content)
 			end
@@ -282,7 +282,7 @@ function vent_core.new(params)
 						transition = vent.outTransition,
 						tag = iterStage.id,
 						onStart = function() p._lifePhase = "out" end,
-						onComplete = function() p._cbe_reserved.transition = nil p._kill() end
+						onComplete = function() p._cbe_reserved.transition = nil p:destroyParticle() end
 					})
 				end
 			})
@@ -299,16 +299,16 @@ function vent_core.new(params)
 	------------------------------------------------------------------------------
 	-- Vent Methods
 	------------------------------------------------------------------------------
-	function vent.resetAngles() if vent.autoCalculateAngles then for w = 1, #vent.angles do local angle1, angle2 = vent.angles[w][1], vent.angles[w][2] local incr = 1 if angle1 > angle2 then incr = -1 end for a = angle1, angle2, incr do if vent.preCalculateAngles then table_insert(vent.calculatedAngles, forcesByAngle(vent.velocity, a)) else table_insert(vent.calculatedAngles, a) end end end else if vent.preCalculateAngles then for a = 1, #vent.angles do table_insert(vent.calculatedAngles, forcesByAngle(vent.velocity, vent.angles[a])) end else for a = 1, #vent.angles do table_insert(vent.calculatedAngles, vent.angles[a]) end end end end
-	function vent.resetPoints() vent.calculatedLinePoints = getPointsAlongLine(vent.point1[1] or vent.point1.x, vent.point1[2] or vent.point1.y, vent.point2[1] or vent.point2.x, vent.point2[2] or vent.point2.y, vent.lineDensity) end
-	function vent.setGravity(x, y) iterStage.xGravity, iterStage.yGravity = x, y end
-	function vent.set(t) for k, v in pairs(t) do if k ~= "_cbe_reserved" then vent[k] = v end end end
-	function vent.start() if vent._cbe_reserved.emitTimer then timer_cancel(vent._cbe_reserved.emitTimer) end vent._cbe_reserved.emitTimer = timer_performWithDelay(vent.emitDelay, vent.emit, vent.emissionNum) end
-	function vent.stop() if vent._cbe_reserved.emitTimer then timer_cancel(vent._cbe_reserved.emitTimer) vent._cbe_reserved.emitTimer = nil end end
-	function vent.setProductUpdate(k, v) if iterStage.productUpdate[k] ~= nil then iterStage.productUpdate[k] = v end end
-	function vent.setMovementScale(x, y) iterStage.xScale = x iterStage.yScale = y or x end
-	function vent.setScale(x, y) vent.scaleX = x vent.scaleY = y or x end
-	function vent.clean() transition_cancel(iterStage.id) for p, i in particles.items() do if p then particles.markForRemoval(p._cbe_reserved.particleIndex) p._cbe_reserved.killed = true p._kill() p = nil end end particles.removeMarked() end
+	function vent:resetAngles() if vent.autoCalculateAngles then for w = 1, #vent.angles do local angle1, angle2 = vent.angles[w][1], vent.angles[w][2] local incr = 1 if angle1 > angle2 then incr = -1 end for a = angle1, angle2, incr do if vent.preCalculateAngles then table_insert(vent.calculatedAngles, forcesByAngle(vent.velocity, a)) else table_insert(vent.calculatedAngles, a) end end end else if vent.preCalculateAngles then for a = 1, #vent.angles do table_insert(vent.calculatedAngles, forcesByAngle(vent.velocity, vent.angles[a])) end else for a = 1, #vent.angles do table_insert(vent.calculatedAngles, vent.angles[a]) end end end end
+	function vent:resetPoints() vent.calculatedLinePoints = getPointsAlongLine(vent.point1[1] or vent.point1.x, vent.point1[2] or vent.point1.y, vent.point2[1] or vent.point2.x, vent.point2[2] or vent.point2.y, vent.lineDensity) end
+	function vent:setGravity(x, y) iterStage.xGravity, iterStage.yGravity = x, y end
+	function vent:set(t) for k, v in pairs(t) do if k ~= "_cbe_reserved" then vent[k] = v end end end
+	function vent:start() if vent._cbe_reserved.emitTimer then timer_cancel(vent._cbe_reserved.emitTimer) end vent._cbe_reserved.emitTimer = timer_performWithDelay(vent.emitDelay, vent.emit, vent.emissionNum) end
+	function vent:stop() if vent._cbe_reserved.emitTimer then timer_cancel(vent._cbe_reserved.emitTimer) vent._cbe_reserved.emitTimer = nil end end
+	function vent:setProductUpdate(k, v) if iterStage.productUpdate[k] ~= nil then iterStage.productUpdate[k] = v end end
+	function vent:setMovementScale(x, y) iterStage.scaleX = x iterStage.scaleY = y or x end
+	function vent:setScale(x, y) vent.scaleX = x vent.scaleY = y or x end
+	function vent:clean() transition_cancel(iterStage.id) for p, i in particles.items() do if p then particles.markForRemoval(p._cbe_reserved.particleIndex) p._cbe_reserved.killed = true p._kill() p = nil end end particles.removeMarked() end
 
 	vent.particles = particles.items
 	vent.countParticles = particles.count
@@ -344,7 +344,7 @@ function vent_core.new(params)
 	end
 
 	-- This version will only get called by a user
-	function vent.destroy()
+	function vent:destroy()
 		-- If we're part of a VentGroup, make sure the VentGroup knows we're being destroyed
 		if vent._cbe_reserved.masterVentGroup then vent._cbe_reserved.masterVentGroup._cbe_reserved.registerDestroy(vent, iterStage) end
 		vent._cbe_reserved.destroy()
@@ -355,9 +355,9 @@ function vent_core.new(params)
 	------------------------------------------------------------------------------
 	-- Finish Up
 	------------------------------------------------------------------------------
-	vent.resetAngles()
-	vent.resetPoints()
-	vent.setGravity(vent.gravityX, vent.gravityY)
+	vent:resetAngles()
+	vent:resetPoints()
+	vent:setGravity(vent.gravityX, vent.gravityY)
 	lib_runtime.addVent(vent)
 
 	vent.onVentInit(vent)

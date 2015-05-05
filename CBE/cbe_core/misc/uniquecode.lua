@@ -1,6 +1,6 @@
 --------------------------------------------------------------------------------
 --[[
-CBEffects Component: Unique Code
+CBE Component: Unique Code
 
 Generate a unique code string.
 --]]

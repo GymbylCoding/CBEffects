@@ -6,7 +6,7 @@ Transitions radius parameters.
 --]]
 --------------------------------------------------------------------------------
 
-local CBE = require("CBEffects.Library")
+local CBE = require("CBE.CBE")
 
 -- Create the vent
 local vent = CBE.newVent({

@@ -16,7 +16,7 @@ circle, and if it's 3, we make a polygon.
 --]]
 --------------------------------------------------------------------------------
 
-local CBE = require("CBEffects.Library")
+local CBE = require("CBE.CBE")
 
 -- Localize our commonly used functions
 local math_random = math.random

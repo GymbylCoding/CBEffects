@@ -6,7 +6,7 @@ Just a simple explosion.
 --]]
 --------------------------------------------------------------------------------
 
-local CBE = require("CBEffects.Library")
+local CBE = require("CBE.CBE")
 
 local vent = CBE.newVent({
 	preset = "flame",
@@ -15,8 +15,8 @@ local vent = CBE.newVent({
 	positionType = "inRadius",
 	color = {{1, 1, 0}, {1, 0.5, 0}, {0.2, 0.2, 0.2}},
 	particleProperties = {blendMode = "add"},
-	x = display.contentCenterX,
-	y = display.contentCenterY,
+	emitX = display.contentCenterX,
+	emitY = display.contentCenterY,
 
 	emissionNum = 5,
 	emitDelay = 5,
@@ -50,7 +50,7 @@ local vent = CBE.newVent({
 vent:start()
 
 timer.performWithDelay(100, function()
-	vent.x = math.random(display.contentCenterX - display.contentWidth * 0.25, display.contentCenterX + display.contentWidth * 0.25)
-	vent.y = math.random(display.contentCenterY - display.contentHeight * 0.25, display.contentCenterY + display.contentHeight * 0.25)
+	vent.emitX = math.random(display.contentCenterX - display.contentWidth * 0.25, display.contentCenterX + display.contentWidth * 0.25)
+	vent.emitY = math.random(display.contentCenterY - display.contentHeight * 0.25, display.contentCenterY + display.contentHeight * 0.25)
 	vent:start()
 end, 0)

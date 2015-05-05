@@ -5,7 +5,7 @@ A small gadget that collects a vent data table and a table of multi-params and m
 
 Usage:
 ---------------------
-local CBE = require("CBEffects.Library")
+local CBE = require("CBE.Library")
 
 local multiparam = require("multiparam")
 
@@ -32,7 +32,7 @@ local editParams = {
 
 local myVent = CBE.newVent(multiparam.edit(myVentParams, editParams)) -- Edit the params using the editParams
 
-myVent:start()
+myVent.start()
 ---------------------
 --]]
 

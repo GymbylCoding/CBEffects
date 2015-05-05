@@ -6,7 +6,7 @@ Elliptical positioning of particles with inner X and Y radii.
 --]]
 --------------------------------------------------------------------------------
 
-local CBE = require("CBEffects.Library")
+local CBE = require("CBE.CBE")
 
 local vent = CBE.newVent({
 	preset = "evil",

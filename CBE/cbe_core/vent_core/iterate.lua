@@ -1,6 +1,6 @@
 --------------------------------------------------------------------------------
 --[[
-CBEffects Component: Iterate
+CBE Component: Iterate
 
 Update particles each frame.
 --]]
@@ -11,11 +11,11 @@ local lib_iterator = {}
 --------------------------------------------------------------------------------
 -- Localize and Include Libraries
 --------------------------------------------------------------------------------
-local screen = require("CBEffects.cbe_core.misc.screen")
-local lib_functions = require("CBEffects.cbe_core.misc.functions")
-local lib_runtime = require("CBEffects.cbe_core.misc.runtime")
-local lib_vst = require("CBEffects.cbe_core.misc.vs-t")
-local lib_uniquecode = require("CBEffects.cbe_core.misc.uniquecode")
+local screen = require("CBE.cbe_core.misc.screen")
+local lib_functions = require("CBE.cbe_core.misc.functions")
+local lib_runtime = require("CBE.cbe_core.misc.runtime")
+local lib_vst = require("CBE.cbe_core.misc.vs-t")
+local lib_uniquecode = require("CBE.cbe_core.misc.uniquecode")
 
 local system_getTimer = system.getTimer
 local math_huge = math.huge

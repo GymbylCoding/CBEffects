@@ -7,7 +7,7 @@ Collects a vent data table and converts it into 8-bit retro style.
 Usage:
 
 ---------------
-local CBE = require("CBEffects.Library")
+local CBE = require("CBE.Library")
 
 local retroizer = require("retroizer")
 
@@ -15,11 +15,11 @@ local myVentParams = { -- Vent parameters, not VentGroup parameters
 	preset = "fountain"
 }
 
-local retroParams = retroizer.retroize{
+local retroParams = retroizer.retroize({
 	data = myVentParams, -- Original vent data
 	cellSize = 24, -- Width/height particles will be clamped to
 	particleSize = 24 -- Width/height of each particle
-}
+})
 
 local vent = CBE.newVent(retroParams) -- Build a vent with the retro parameters
 
@@ -30,7 +30,7 @@ vent:start()
 
 local retroizer = {}
 
-local presets = require("CBEffects.cbe_core.misc.presets").vents
+local presets = require("CBE.cbe_core.misc.presets").vents
 
 local math_round = math.round
 local display_newRect = display.newRect

@@ -1,8 +1,11 @@
 --------------------------------------------------------------------------------
 --[[
-CBEffects Component: VS-T
+CBE Component: VS-T
 
-The VS-T data structure. This implementation is adapted for CBEffects.
+The VS-T data structure. This implementation is adapted for CBE.
+
+VS-T originally stood for something cool, but I can't remember what it is now.
+Too bad. Bummer.
 --]]
 --------------------------------------------------------------------------------
 
