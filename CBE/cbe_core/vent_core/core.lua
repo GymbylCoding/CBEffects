@@ -308,7 +308,7 @@ function vent_core.new(params)
 	function vent:setProductUpdate(k, v) if iterStage.productUpdate[k] ~= nil then iterStage.productUpdate[k] = v end end
 	function vent:setMovementScale(x, y) iterStage.scaleX = x iterStage.scaleY = y or x end
 	function vent:setScale(x, y) vent.scaleX = x vent.scaleY = y or x end
-	function vent:clean() transition_cancel(iterStage.id) for p, i in particles.items() do if p then particles.markForRemoval(p._cbe_reserved.particleIndex) p._cbe_reserved.killed = true p._kill() p = nil end end particles.removeMarked() end
+	function vent:clean() transition_cancel(iterStage.id) for p, i in particles.items() do if p then particles.markForRemoval(p._cbe_reserved.particleIndex) p._cbe_reserved.killed = true p:destroyParticle() p = nil end end particles.removeMarked() end
 
 	vent.particles = particles.items
 	vent.countParticles = particles.count
@@ -332,8 +332,8 @@ function vent_core.new(params)
 	-- This version will only be called by the vent's parent VentGroup
 	function vent._cbe_reserved.destroy()
 		particles.removeMarked() -- Make sure there isn't any "garbage" in the particle structure
-		vent.stop()
-		vent.clean()
+		vent:stop()
+		vent:clean()
 		iterStage.unlinkAllFields()
 		lib_uniquecode.delete("iter", iterStage.id)
 		iterStage = nil
