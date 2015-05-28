@@ -157,37 +157,6 @@ function vent_core.new(params)
 			end
 
 			--------------------------------------------------------------------------
-			-- Set Velocity
-			--------------------------------------------------------------------------
-			if vent.useVelFunction then
-				local xVel, yVel = vent.velFunction(p, vent, vent.content)
-				p._cbe_reserved.xVel, p._cbe_reserved.yVel = xVel, yVel
-			else
-				local velocity
-
-				if vent.cycleAngle then
-					if vent.preCalculateAngles then
-						velocity = vent.calculatedAngles[vent.curAngle]
-					else
-						local angle = vent.calculatedAngles[vent.curAngle]
-						velocity = forcesByAngle(vent.velocity, angle)
-					end
-					vent.curAngle = (((vent.curAngle + vent.angleIncr) - 1) % (#vent.calculatedAngles)) + 1
-				else
-					if vent.preCalculateAngles then
-						velocity = either(vent.calculatedAngles)
-					else
-						local angle = either(vent.calculatedAngles)
-						velocity = forcesByAngle(vent.velocity, angle)
-					end
-				end
-
-				p._cbe_reserved.xVel, p._cbe_reserved.yVel = velocity.x, velocity.y
-			end
-
-			if not onCreationExecuted and vent.onCreationTime == "afterVel" then vent.onCreation(p, vent, vent.content) onCreationExecuted = true end
-
-			--------------------------------------------------------------------------
 			-- Set Color
 			--------------------------------------------------------------------------
 			local color
@@ -264,6 +233,38 @@ function vent_core.new(params)
 			p._cbe_reserved.prevX, p._cbe_reserved.prevY = p.x, p.y
 
 			if not onCreationExecuted and vent.onCreationTime == "afterPosition" then vent.onCreation(p, vent, vent.content) onCreationExecuted = true end
+
+			--------------------------------------------------------------------------
+			-- Set Velocity
+			--------------------------------------------------------------------------
+			if vent.useVelFunction then
+				local xVel, yVel = vent.velFunction(p, vent, vent.content)
+				p._cbe_reserved.xVel, p._cbe_reserved.yVel = xVel, yVel
+			else
+				local velocity
+
+				if vent.cycleAngle then
+					if vent.preCalculateAngles then
+						velocity = vent.calculatedAngles[vent.curAngle]
+					else
+						local angle = vent.calculatedAngles[vent.curAngle]
+						velocity = forcesByAngle(vent.velocity, angle)
+					end
+					vent.curAngle = (((vent.curAngle + vent.angleIncr) - 1) % (#vent.calculatedAngles)) + 1
+				else
+					if vent.preCalculateAngles then
+						velocity = either(vent.calculatedAngles)
+					else
+						local angle = either(vent.calculatedAngles)
+						velocity = forcesByAngle(vent.velocity, angle)
+					end
+				end
+
+				p._cbe_reserved.xVel, p._cbe_reserved.yVel = velocity.x, velocity.y
+			end
+
+			if not onCreationExecuted and vent.onCreationTime == "afterVel" then vent.onCreation(p, vent, vent.content) onCreationExecuted = true end
+
 
 			--------------------------------------------------------------------------
 			-- Set Up Particle Transition
