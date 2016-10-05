@@ -38,7 +38,7 @@ function lib_ventframe.newFrame(params, preset)
 	------------------------------------------------------------------------------
 	---- Basic Parameters
 	------------------------------------------------------------------------------
-	vent.emitX               = fnn(params.emitX, preset.emitY, screen.centerX)
+	vent.emitX               = fnn(params.emitX, preset.emitX, screen.centerX)
 	vent.emitY               = fnn(params.emitY, preset.emitY, screen.centerY)
 	vent.build               = fnn(params.build, preset.build, function() return display.newRect(0, 0, 20, 20) end)
 	vent.particleProperties  = fnn(params.particleProperties, params.propertyTable, preset.particleProperties, {})
